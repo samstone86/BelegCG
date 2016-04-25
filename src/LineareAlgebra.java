@@ -58,13 +58,13 @@ public class LineareAlgebra {
 
     }
 
-    public static double lengh(double[] a) {
+    public static double length(double[] a) {
         double erg = Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2));
         return erg;
     }
 
     public static double[] normalize(double[] a) {
-        double l = lengh(a);
+        double l = length(a);
         double[] erg = new double[3];
         for (int i = 0; i < a.length; i++) {
             erg[i] = (1 / l) * a[i];
