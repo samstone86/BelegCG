@@ -1,3 +1,5 @@
+import static java.lang.Math.*;
+
 /**
  * Created by samstone on 25.04.2016.
  */
@@ -59,42 +61,44 @@ public class LineareAlgebra {
     }
 
     public static double length(double[] a) {
-        double erg = Math.sqrt(Math.pow(a[0], 2) + Math.pow(a[1], 2) + Math.pow(a[2], 2));
-        return erg;
+        double len = sqrt(pow(a[0], 2) + pow(a[1], 2) + pow(a[2], 2));
+        return len;
     }
 
     public static double[] normalize(double[] a) {
         double l = length(a);
-        double[] erg = new double[3];
+        double[] norm = new double[3];
         for (int i = 0; i < a.length; i++) {
-            erg[i] = (1 / l) * a[i];
+            norm[i] = (1 / l) * a[i];
         }
-        return erg;
+        return norm;
     }
 
-    public static void euklDistance(double x1, double x2, double y1, double y2) {
+    public static double euklDistance(double x1, double x2, double y1, double y2) {
         /* euklDistance 2D */
-        double PotX = Math.pow((x1 - x2), 2);   // Potenzieren
-        double PotY = Math.pow((y1 - y2), 2);
-        double eukl   = Math.sqrt(PotX + PotY);
+        double PotX = pow((x1 - x2), 2);   // Potenzieren
+        double PotY = pow((y1 - y2), 2);
+        double eukl   = sqrt(PotX + PotY);
+        return eukl;
     }
 
-    public static void manhattanDistance(double x0, double x1, double y0, double y1) {
+    public static double manhattanDistance(double x0, double x1, double y0, double y1) {
         double dist = Math.abs(x1 - x0) + Math.abs(y1 - y0);
+        return dist;
     }
 
     public static double[] crossProduct(double[] a, double[] b) {
-        double[] crossP = null;
-        crossP[0] = a[1] * b[2] - a[2] * b[1];
-        crossP[1] = a[2] * b[0] - a[0] * b[2];
-        crossP[2] = a[0] * b[2] - a[1] * b[0];
-        return crossP;
+        double[] cross = null;
+        cross[0] = a[1] * b[2] - a[2] * b[1];
+        cross[1] = a[2] * b[0] - a[0] * b[2];
+        cross[2] = a[0] * b[2] - a[1] * b[0];
+        return cross;
     }
     public static double dotProduct(double[] a, double[] b) {
-        double sum = 0.0;
+        double dot = 0.0;
         for (int i = 0; i < a.length; i++)
-            sum += a[i] * b[i];
-        return sum;
+            dot += a[i] * b[i];
+        return dot;
     }
 
     public static void cosEquation(double[] a, double[] b) {
@@ -113,15 +117,15 @@ public class LineareAlgebra {
 
     }
 
-    public static void radToDegree(double a) {
-        Math.toDegrees(a);
+    public static double radToDegree(double a) {
+        return toDegrees(a);
     }
 
-    public static void degreeToRad(double a) {
-        Math.toRadians(a);
+    public static double degreeToRad(double a) {
+        return toRadians(a);
     }
 
-    public static void determinante(double[] a, double[] b) {
+    public static void determinante(double[][] mat, double[] b) {
 
     }
 
