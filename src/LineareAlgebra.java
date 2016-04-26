@@ -10,8 +10,7 @@ public class LineareAlgebra {
     private LineareAlgebra() {}
 
     public static void add(double[] a, double[] b) {
-        double[] erg = null;
-
+        double[] erg = new double[3];
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] + b[i];
@@ -21,8 +20,7 @@ public class LineareAlgebra {
     }
 
     public static void sub(double[] a, double[] b) {
-        double[] erg = null;
-
+    	double[] erg = new double[3];
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] - b[i];
@@ -32,8 +30,7 @@ public class LineareAlgebra {
     }
 
     public static void mult(double[] a, double[] b) {
-        double[] erg = null;
-
+    	double[] erg = new double[3];
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] * b[i];
@@ -43,11 +40,12 @@ public class LineareAlgebra {
     }
 
     public static void div(double[] a, double[] b) {
-        double[] erg = null;
+    	double[] erg = new double[3];
 
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
-                erg[i] = a[i] / b[i];
+                if (a[i] == 0 || b[i] == 0)
+            	erg[i] = a[i] / b[i];
         }
         else
             System.out.println("Fehler div() !");
@@ -120,21 +118,48 @@ public class LineareAlgebra {
     	return acos(result);
     }
 
-    public static double radToDegree(double a) { //Bogenmaß in Winkelgrad
+    public static double radToDegree(double a) { //BogenmaÃŸ in Winkelgrad
        
         return toDegrees(a);
     }
 
-    public static double degreeToRad(double a) { // Winkelgrad in Bogenmaß
+    public static double degreeToRad(double a) { // Winkelgrad in BogenmaÃŸ
         return toRadians(a);
     }
 
-    public static void determinante(double[][] mat, double[] b) {
-
+    public static double determinante(double[][] matrix, int n) {
+    	double det = 0;
+        double ergAdd = 0;
+        double ergSub = 0;
+        double matElem = 1;
+        double matElem2 = -1;
+        int j = 2;
+        int k = 0;
+        for (int p = 0; p < n; p++) {
+            matElem = 1;
+            matElem = -1;
+            for (int i = 0; i < n; i++) {
+                matElem = matrix[k][i] * matElem; 
+                matElem2 = matrix[k][j] * matElem2;
+                j--;
+                if (j == -1)
+                {
+                    j = n-1;
+                }
+                k = (k + 1)%n;
+            }
+            ergAdd += matElem;
+            ergSub -= matElem2;
+            det = ergAdd + ergSub;
+            k++;
+            System.out.println(det);
+        }   
+        return det;
     }
 
-    public static void abs(double a) {
-        Math.abs(a);
+    public static double abs(double[] a) {
+        double ab = length(a);
+    	return ab;
     }
 
     public static void show(double[] a) {
