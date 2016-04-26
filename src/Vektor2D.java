@@ -63,6 +63,7 @@ public class Vektor2D {
     public static void setPosition(double[] a, double new_x, double new_y) {
             a[0]= new_x;
             a[1]=new_y;
+        // Ist das so gemeint mit den Parametern?
 
     }
 
