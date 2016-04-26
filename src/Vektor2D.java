@@ -60,8 +60,10 @@ public class Vektor2D {
         return norm;
     }
 
-    public static double setPosition() {
-        // ???
+    public static void setPosition(double[] a, double new_x, double new_y) {
+            a[0]= new_x;
+            a[1]=new_y;
+
     }
 
     public static boolean isNullVector(double[] a) {

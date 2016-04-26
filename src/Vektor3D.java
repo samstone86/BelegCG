@@ -60,8 +60,10 @@ public class Vektor3D {
         return norm;
     }
 
-    public static double setPosition() {
-        // ???
+    public static void setPosition(double[] a, double new_x, double new_y, double new_z) {
+        a[0]= new_x;
+        a[1]=new_y;
+        a[2]= new_z;
     }
 
     public static boolean isNullVector(double[] a) {
