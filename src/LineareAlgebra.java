@@ -66,7 +66,16 @@ public class LineareAlgebra {
     }
 
     public static void isEqual(double[] a, double[] b) {
-
+    	int c = 0;
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                if (a[i] == b[i])
+                	c++;                	
+        }
+        if (c == 3)
+        	System.out.println("Vektoren sind gleich!");
+        else
+        	System.out.println("Vektoren sind nicht gleich!");        
     }
 
     public static void isNotEqual(double[] a, double[] b) {
