@@ -1,107 +1,96 @@
 
 import static java.lang.Math.*;
 
-/**
- * Created by samstone86 & rossy95 on 25.04.2016.
- */
-
 public class LineareAlgebra {
 
     private LineareAlgebra() {}
 
     public static void add(double[] a, double[] b) {
-        double[] erg;
+        double[] erg = new double[3];
 
-       if (a.length == b.length) {
-            erg = new double[a.length];
-           for (int i = 0; i < a.length; i++)
-               erg[i] = a[i] + b[i];
-       }
-       else if (a.length > b.length) {
-           erg = new double[a.length];
-           for (int i = 0; i < b.length; i++)
-               erg[i] = a[i] + b[i];
-           for (int i=b.length; i< a.length; i++){
-               erg[i]= a[i];
-           }
-       }
-       else  {
-           erg = new double[b.length];
-           for (int i = 0; i < a.length; i++)
-               erg[i] = a[i] + b[i];
-           for (int i=a.length; i< b.length; i++){
-               erg[i]= b[i];
-           }
-       }
-       show(erg);
-   }
-
-
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                erg[i] = a[i] + b[i];
+        }
+        else if (a.length > b.length) {
+                 for (int i = 0; i < b.length; i++)
+                     erg[i] = a[i] + b[i];
+                 for (int i=b.length; i< a.length; i++){
+                	 erg[i]= a[i];
+                 }
+             }
+        else if (a.length < b.length) {
+                 for (int i = 0; i < a.length; i++)
+                     erg[i] = a[i] + b[i];
+                 for (int i=a.length; i< b.length; i++){
+                	 erg[i]= b[i];
+                 }
+             }
+        show(erg);
+    }
 
     public static void sub(double[] a, double[] b) {
-    	 double[] erg = new double[3];
+    	double[] erg = new double[3];
 
-       if (a.length == b.length) {
-           for (int i = 0; i < a.length; i++)
-               erg[i] = a[i] - b[i];
-       }
-       else if (a.length > b.length) {
-           for (int i = 0; i < b.length; i++)
-               erg[i] = a[i] - b[i];
-           for (int i=b.length; i< a.length; i++){
-               erg[i]= a[i] - 0;
-           }
-       }
-       else if (a.length < b.length) {
-           for (int i = 0; i < a.length; i++)
-               erg[i] = a[i] - b[i];
-           for (int i=a.length; i< b.length; i++){
-               erg[i]= 0 -b[i];
-           }
-       }
-       show(erg);
-   }
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                erg[i] = a[i] - b[i];
+        }
+        else if (a.length > b.length) {
+            for (int i = 0; i < b.length; i++)
+                erg[i] = a[i] - b[i];
+            for (int i=b.length; i< a.length; i++){
+           	 	erg[i]= a[i] - 0;
+            }
+        }
+        else if (a.length < b.length) {
+            for (int i = 0; i < a.length; i++)
+                erg[i] = a[i] - b[i];
+            for (int i=a.length; i< b.length; i++){
+           	 	erg[i]= 0 -b[i];
+            }
+        }
+        show(erg);
+    }
 
+    public static void mult(double[] a, double[] b) {
+    	double[] erg = new double[3];
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                erg[i] = a[i] * b[i];
+        }
+        else
+            System.out.println("Fehler mult() !");
+    }
 
-     public static void mult(double[] a, double b) {  //vek, skalar
-       double[] erg = new double[3];
+    public static void div(double[] a, double[] b) {
+    	double[] erg = new double[3];
 
-           for (int i = 0; i < a.length; i++)
-               erg[i] = a[i] * b;
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                if (a[i] == 0 || b[i] == 0)
+            	erg[i] = a[i] / b[i];
+        }
+        else
+            System.out.println("Fehler div() !");
+    }
 
+    public static void isEqual(double[] a, double[] b) {
+    	int c = 0;
+        if (a.length == b.length) {
+            for (int i = 0; i < a.length; i++)
+                if (a[i] == b[i])
+                	c++;                	
+        }
+        if (c == 3)
+        	System.out.println("Vektoren sind gleich!");
+        else
+        	System.out.println("Vektoren sind nicht gleich!");        
+    }
 
-   }
+    public static void isNotEqual(double[] a, double[] b) {
 
-       public static void div(double[] a, double b) {  //vek, skalar
-       double[] erg = new double[3];
-
-
-           for (int i = 0; i < a.length; i++) {
-               if (b != 0)
-                   erg[i] = a[i] / b;
-           }
-   }
-
-       public static boolean isEqual(double[] a, double[] b) {
-       if (a.length == b.length) {
-           if (a[0] == b[0] && a[1] == b[1] && a[2] == b[2]) {
-               return true;
-           }
-       }
-       return false;
-
-   }
-
-   public static boolean isNotEqual(double[] a, double[] b) {
-       if (a.length == b.length) {
-           if (a[0] != b[0] || a[1] != b[1] || a[2] != b[2]) {
-               return true;
-           }
-
-       }
-       return false;
-   }
-
+    }
 
     public static double length(double[] a) {
         double len = sqrt(pow(a[0], 2) + pow(a[1], 2) + pow(a[2], 2));
@@ -142,8 +131,7 @@ public class LineareAlgebra {
         return dot;
     }
 
-    public static double  cosEquation(double[] a, double[] b) {
-            return  dotProduct(a, b)/(length(a)*length(b));
+    public static void cosEquation(double[] a, double[] b) {
 
     }
 
@@ -161,7 +149,7 @@ public class LineareAlgebra {
     	return acos(result);
     }
 
-    public static double radToDegree(double a) { //Bogenmaß in Winkelgrad  //Bogenmaß in Winkelgrad SELBER SCHREIBEN
+    public static double radToDegree(double a) { //Bogenmaß in Winkelgrad
        
         return toDegrees(a);
     }
@@ -207,7 +195,7 @@ public class LineareAlgebra {
 
     public static void show(double[] a) {
         	System.out.println(a.length);
-    	switch (a.length){
+    	switch (a.length-1){
         case 1:
         	System.out.println("[" + a[0] + "]"); break;
         case 2: 
@@ -227,10 +215,7 @@ public class LineareAlgebra {
        System.out.println(radToDegree(4.1));
        System.out.println(angleDegree(vek,vek2));
        System.out.println(angleRad(vek,vek2));
-       double  a= Double.MAX_VALUE +1;
-       System.out.println(a);
-       System.out.println(cosEquation(vek,vek2));
-
+       
     
     }
     
