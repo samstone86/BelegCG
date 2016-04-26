@@ -1,3 +1,4 @@
+
 import static java.lang.Math.*;
 
 /**
@@ -94,7 +95,7 @@ public class LineareAlgebra {
         cross[2] = a[0] * b[2] - a[1] * b[0];
         return cross;
     }
-    public static double dotProduct(double[] a, double[] b) {
+    public static double dotProduct(double[] a, double[] b) { //Skalarprodukt
         double dot = 0.0;
         for (int i = 0; i < a.length; i++)
             dot += a[i] * b[i];
@@ -109,19 +110,22 @@ public class LineareAlgebra {
 
     }
 
-    public static void angleRad(double a) {
-
+    public static double angleRad(double[] a, double[] b) {
+    	double result= (dotProduct(a, b)/ (length (a)* length(b)));
+    	return toRadians(acos(result));
     }
 
-    public static void angleDegree(double a) {
-
+    public static double angleDegree(double[] a, double[] b) {
+    	double result= (dotProduct(a, b)/ (length (a)* length(b)));
+    	return acos(result);
     }
 
-    public static double radToDegree(double a) {
+    public static double radToDegree(double a) { //Bogenmaß in Winkelgrad
+       
         return toDegrees(a);
     }
 
-    public static double degreeToRad(double a) {
+    public static double degreeToRad(double a) { // Winkelgrad in Bogenmaß
         return toRadians(a);
     }
 
@@ -138,4 +142,16 @@ public class LineareAlgebra {
         System.out.println("[" + a[1] + "]");
         System.out.println("[" + a[2] + "]");
     }
+    
+    public static void main(String args[]){
+       
+       double vek[]={3,4,9};
+       double vek2[]={2,12,50};
+       System.out.println(radToDegree(4.1));
+       System.out.println(angleDegree(vek,vek2));
+       System.out.println(angleRad(vek,vek2));
+       
+    
+    }
+    
 }
