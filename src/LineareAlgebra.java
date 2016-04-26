@@ -11,12 +11,26 @@ public class LineareAlgebra {
 
     public static void add(double[] a, double[] b) {
         double[] erg = new double[3];
+
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] + b[i];
         }
-        else
-            System.out.println("Fehler add() !");
+        else if (a.length > b.length) {
+                 for (int i = 0; i < b.length; i++)
+                     erg[i] = a[i] + b[i];
+                 for (int i=b.length; i< a.length; i++){
+                	 erg[i]= a[i];
+                 }
+             }
+        else if (a.length < b.length) {
+                 for (int i = 0; i < a.length; i++)
+                     erg[i] = a[i] + b[i];
+                 for (int i=a.length; i< b.length; i++){
+                	 erg[i]= b[i];
+                 }
+             }
+        show(erg);
     }
 
     public static void sub(double[] a, double[] b) {
