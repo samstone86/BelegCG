@@ -35,12 +35,26 @@ public class LineareAlgebra {
 
     public static void sub(double[] a, double[] b) {
     	double[] erg = new double[3];
+
         if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] - b[i];
         }
-        else
-            System.out.println("Fehler sub() !");
+        else if (a.length > b.length) {
+            for (int i = 0; i < b.length; i++)
+                erg[i] = a[i] - b[i];
+            for (int i=b.length; i< a.length; i++){
+           	 	erg[i]= a[i] - 0;
+            }
+        }
+        else if (a.length < b.length) {
+            for (int i = 0; i < a.length; i++)
+                erg[i] = a[i] - b[i];
+            for (int i=a.length; i< b.length; i++){
+           	 	erg[i]= 0 -b[i];
+            }
+        }
+        show(erg);
     }
 
     public static void mult(double[] a, double[] b) {
@@ -184,9 +198,18 @@ public class LineareAlgebra {
     }
 
     public static void show(double[] a) {
-        System.out.println("[" + a[0] + "]");
-        System.out.println("[" + a[1] + "]");
-        System.out.println("[" + a[2] + "]");
+        	System.out.println(a.length);
+    	switch (a.length-1){
+        case 1:
+        	System.out.println("[" + a[0] + "]"); break;
+        case 2: 
+        	System.out.println("[" + a[0] + "]");
+        	System.out.println("[" + a[1] + "]"); break;
+        case 3:
+        	System.out.println("[" + a[0] + "]");
+        	System.out.println("[" + a[1] + "]");
+        	System.out.println("[" + a[2] + "]"); break;
+        }
     }
     
     public static void main(String args[]){
