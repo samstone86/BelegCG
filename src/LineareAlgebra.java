@@ -97,10 +97,8 @@ public class LineareAlgebra {
     }
 
     public static double euklDistance(double x1, double x2, double y1, double y2) {
-        /* euklDistance 2D */
-        double PotX = pow((x1 - x2), 2);   // Potenzieren
-        double PotY = pow((y1 - y2), 2);
-        double eukl   = sqrt(PotX + PotY);
+        /* euklDistance 2D pow = Potenzieren*/
+        double eukl   = sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
         return eukl;
     }
 
