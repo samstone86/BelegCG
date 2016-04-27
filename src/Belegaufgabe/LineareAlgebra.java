@@ -101,7 +101,7 @@ public class LineareAlgebra {
     }
 
     public static double[] crossProduct(double[] a, double[] b) {
-        double[] cross = null;
+        double[] cross = new double[3];
         cross[0] = a[1] * b[2] - a[2] * b[1];
         cross[1] = a[2] * b[0] - a[0] * b[2];
         cross[2] = a[0] * b[2] - a[1] * b[0];
@@ -119,7 +119,7 @@ public class LineareAlgebra {
     }
 
     public static void sinEquation(double[] a, double[] b) {
-
+            return (determinante()/(length(a)*length(b)));
     }
 
     public static double angleRad(double[] a, double[] b) {
@@ -130,14 +130,12 @@ public class LineareAlgebra {
     	return acos(cosEquation(a,b));
     }
 
-    public static double radToDegree(double a) { //Bogenmaß in Winkelgrad
-       
-        return  ((360)/(2*Math.PI)*a);
+    public static double radToDegree(double rad) { //Bogenmaß in Winkelgrad
+        return  ((360)/(2*Math.PI)*rad);
     }
 
-    public static double degreeToRad(double a) { // Winkelgrad in Bogenmaß
-
-        return  ((2*Math.PI)/360*a);
+    public static double degreeToRad(double deg) { // Winkelgrad in Bogenmaß
+        return  ((2*Math.PI)/360*deg);
     }
 
     public static double determinante(double[][] matrix, int n) {
@@ -176,7 +174,7 @@ public class LineareAlgebra {
     }
 
     public static void show(double[] a) {
-        	System.out.println(a.length);
+        	/*System.out.println(a.length);
     	switch (a.length-1){
         case 1:
         	System.out.println("[" + a[0] + "]"); break;
@@ -187,6 +185,9 @@ public class LineareAlgebra {
         	System.out.println("[" + a[0] + "]");
         	System.out.println("[" + a[1] + "]");
         	System.out.println("[" + a[2] + "]"); break;
+        }*/
+        for (int i=0; i < a.length; i ++){
+            System.out.println("[" + a[i] + "]");
         }
     }
     
