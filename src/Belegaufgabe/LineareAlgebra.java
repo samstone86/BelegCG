@@ -1,8 +1,6 @@
 package Belegaufgabe;
 
 import static java.lang.Math.*;
-//import Belegaufgabe.Vektor2D;
-//import Belegaufgabe.Vektor3D;
 
 
 public class LineareAlgebra {
@@ -11,6 +9,9 @@ public class LineareAlgebra {
 
     public static Vektor2D add(Vektor2D v1, Vektor2D v2) {
         return new Vektor2D(v1.x+v2.x, v1.y+v2.y);
+    }
+    public static Vektor3D add(Vektor3D v1, Vektor3D v2) {
+        return new Vektor3D(v1.x+v2.x, v1.y+v2.y, v1.z+v2.z);
     }
 
 
@@ -41,12 +42,26 @@ public class LineareAlgebra {
 
     }
 
+    public static Vektor3D sub(Vektor3D v1, Vektor3D v2) {
+
+        return new Vektor3D(v1.x-v2.x, v1.y-v2.y, v1.z-v2.z);
+
+    }
+
     public static Vektor2D mult(Vektor2D v1, double s) {
     	return new Vektor2D(v1.x*s, v1.y*s);
     }
 
+    public static Vektor3D mult(Vektor3D v1, double s) {
+        return new Vektor3D(v1.x*s, v1.y*s, v1.z*s);
+    }
+
     public static Vektor2D div(Vektor2D v1, double s) {
         return new Vektor2D(v1.x/s, v1.y/s);
+    }
+
+    public static Vektor3D div(Vektor3D v1, double s) {
+        return new Vektor3D(v1.x/s, v1.y/s, v1.z/s);
     }
 
     public static boolean isEqual(Vektor2D v1, Vektor2D v2) {
@@ -54,17 +69,36 @@ public class LineareAlgebra {
 
     }
 
+    public static boolean isEqual(Vektor3D v1, Vektor3D v2) {
+        return (v1.x==v2.x && v1.y==v2.y && v1.z== v2.z);
+
+    }
+
+
     public static boolean isNotEqual(Vektor2D v1, Vektor2D v2) {
          return !isEqual(v1,v2);
+    }
+
+    public static boolean isNotEqual(Vektor3D v1, Vektor3D v2) {
+        return !isEqual(v1,v2);
     }
 
     public static double length(Vektor2D v1) {
         return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)));
     }
 
+    public static double length(Vektor3D v1) {
+        return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)+ pow(v1.z,2)));
+    }
+
     public static Vektor2D normalize(Vektor2D v1) {
         double l = length(v1);
         return new Vektor2D(((1 / l)* v1.x), ((1 / l)* v1.y));
+    }
+
+    public static Vektor3D normalize(Vektor3D v1) {
+        double l = length(v1);
+        return new Vektor3D(((1 / l)* v1.x), ((1 / l)* v1.y),((1 / l)* v1.z));
     }
 
     public static double euklDistance(Vektor2D v1, Vektor2D v2) {
@@ -73,11 +107,20 @@ public class LineareAlgebra {
 
     }
 
+    public static double euklDistance(Vektor3D v1, Vektor3D v2) {
+        /* euklDistance 2D pow = Potenzieren*/
+        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y),2 )+pow((v1.z - v2.z), 2));
+
+    }
     public static double manhattanDistance(Vektor2D v1, Vektor2D v2) {
         return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
     }
 
-    public static double[] crossProduct(double[] a, double[] b) {
+    public static double manhattanDistance(Vektor3D v1, Vektor3D v2) {
+        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y)+ Math.abs(v1.z - v2.z);
+    }
+
+    public static double[] crossProduct(double[] a, double[] b) {   //neumachen
         double[] cross = new double[3];
         cross[0] = a[1] * b[2] - a[2] * b[1];
         cross[1] = a[2] * b[0] - a[0] * b[2];
@@ -88,24 +131,38 @@ public class LineareAlgebra {
         return v1.x*v2.x+v1.y*v2.y;
 
     }
-    public static double dotProduct(Vektor3D v1, Vektor3D v2, Vektor3D v3) { //Skalarprodukt
-        return v1.x*v2.x*v3.x+v1.y*v2.y*v3.y+v1.z*v2.z*v3.z;
+    public static double dotProduct(Vektor3D v1, Vektor3D v2) { //Skalarprodukt
+        return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z;
     }
 
     public static double cosEquation(Vektor2D v1, Vektor2D v2) {
        return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
 
-    /*public static double sinEquation(Vektor2D v1, Vektor2D v2) {
-            return (determinante()/(length(v1)*length(v2)));
+    public static double cosEquation(Vektor3D v1, Vektor3D v2) {
+        return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
-*/
+
+    /*public static double sinEquation(Vektor2D v1, Vektor2D v2) {  //Determinate?
+            return (determinante()/(length(v1)*length(v2)));
+    } */
+
     public static double angleRad(Vektor2D v1, Vektor2D v2) {
 
         return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
+    public static double angleRad(Vektor3D v1, Vektor3D v2) {
+
+        return degreeToRad(acos(cosEquation(v1,v2)));
+    }
+
     public static double angleDegree(Vektor2D v1, Vektor2D v2) {
+
+        return acos(cosEquation(v1,v2));
+    }
+
+    public static double angleDegree(Vektor3D v1, Vektor3D v2) {
 
         return acos(cosEquation(v1,v2));
     }
@@ -118,7 +175,7 @@ public class LineareAlgebra {
         return  ((2*Math.PI)/360*deg);
     }
 
-    public static double determinante(double[][] matrix, int n) {
+    public static double determinante(double[][] matrix, int n) {   //neu!
     	double det = 0;
         double ergAdd = 0;
         double ergSub = 0;
@@ -150,6 +207,10 @@ public class LineareAlgebra {
 
     public static double abs(Vektor2D v1) {
     	return length(v1);
+    }
+
+    public static double abs(Vektor3D v1) {
+        return length(v1);
     }
 
     public static void show(Vektor2D v1) {
