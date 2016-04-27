@@ -7,15 +7,15 @@ public class LineareAlgebra {
 
     private LineareAlgebra() {}
 
-    public static double[] add(double[] a, double[] b) {
-        return Vektor2D.add(a, b);
+    public static Vektor2D add(Vektor2D v1, Vektor2D v2) {
+        return new Vektor2D(v1.x+v2.x, v1.y+v2.y);
     }
 
 
-    public static void sub(double[] a, double[] b) {
-    	double[] erg = new double[3];
+    public static Vektor2D sub(Vektor2D v1, Vektor2D v2) {
 
-        if (a.length == b.length) {
+
+        /*if (a.length == b.length) {
             for (int i = 0; i < a.length; i++)
                 erg[i] = a[i] - b[i];
         }
@@ -33,29 +33,18 @@ public class LineareAlgebra {
            	 	erg[i]= 0 -b[i];
             }
         }
-        show(erg);
+        show(erg); */
+
+        return new Vektor2D(v1.x-v2.x, v1.y-v2.y);
+
     }
 
-    public static void mult(double[] a, double[] b) {
-    	double[] erg = new double[3];
-        if (a.length == b.length) {
-            for (int i = 0; i < a.length; i++)
-                erg[i] = a[i] * b[i];
-        }
-        else
-            System.out.println("Fehler mult() !");
+    public static Vektor2D mult(Vektor2D v1, double s) {
+    	return new Vektor2D(v1.x*s, v1.y*s);
     }
 
-    public static void div(double[] a, double[] b) {
-    	double[] erg = new double[3];
-
-        if (a.length == b.length) {
-            for (int i = 0; i < a.length; i++)
-                if (a[i] == 0 || b[i] == 0)
-            	erg[i] = a[i] / b[i];
-        }
-        else
-            System.out.println("Fehler div() !");
+    public static Vektor2D div(Vektor2D v1, double s) {
+        return new Vektor2D(v1.x/s, v1.y/s);
     }
 
     public static void isEqual(double[] a, double[] b) {
