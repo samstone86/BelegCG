@@ -5,7 +5,10 @@ import static java.lang.Math.*;
 public class Vektor2D {
 	public double x, y;
 
-	Vektor2D(double x, double y) {}
+	public Vektor2D(double x, double y) {
+        this.x=x;
+        this.y=y;
+    }
 
     public void add(Vektor2D v) {
     	if (this.length() != v.length())

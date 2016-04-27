@@ -5,7 +5,11 @@ import static java.lang.Math.*;
 public class Vektor3D {
 	public double x, y, z;
 
-	Vektor3D(double x, double y, double z) {}
+	public Vektor3D(double x, double y, double z) {
+        this.x=x;
+        this.y=y;
+        this.z=z;
+    }
 
     public void add(Vektor3D v) {
     	if (this.length() != v.length())

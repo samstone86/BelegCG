@@ -1,6 +1,8 @@
 package Belegaufgabe;
 
 import static java.lang.Math.*;
+//import Belegaufgabe.Vektor2D;
+//import Belegaufgabe.Vektor3D;
 
 
 public class LineareAlgebra {
@@ -94,10 +96,10 @@ public class LineareAlgebra {
        return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
 
-    public static double sinEquation(Vektor2D v1, Vektor2D v2) {
+    /*public static double sinEquation(Vektor2D v1, Vektor2D v2) {
             return (determinante()/(length(v1)*length(v2)));
     }
-
+*/
     public static double angleRad(Vektor2D v1, Vektor2D v2) {
 
         return degreeToRad(acos(cosEquation(v1,v2)));
@@ -166,11 +168,13 @@ public class LineareAlgebra {
        
        double vek[]={3,4,9};
        double vek2[]={2,12,50};
+        Vektor2D a= new Vektor2D(2,3);
+        show(a);
        System.out.println(radToDegree(4.1));
-       System.out.println(angleDegree(vek,vek2));
+      /* System.out.println(angleDegree(vek,vek2));
        System.out.println(angleRad(vek,vek2));
         System.out.println(radToDegree(0.6));
-        System.out.println(degreeToRad(23));
+        System.out.println(degreeToRad(23));*/
        
     
     }
