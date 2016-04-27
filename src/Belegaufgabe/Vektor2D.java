@@ -3,6 +3,7 @@ package Belegaufgabe;
 import static java.lang.Math.*;
 
 public class Vektor2D {
+
 	public double x, y;
 
 	Vektor2D(double x, double y) {}
@@ -21,14 +22,20 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-        this.x *= s;
-        this.y *= s;
+    	try {
+    		this.x *= s;
+        	this.y *= s;
+    	} catch (Exception e) {
+    		System.out.println(e);
+    	}
     }
 
     public void div(double s) {
-    	if (s != 0) {    		
+    	try {    		
     		this.x /= s;
     		this.y /= s;
+    	} catch (Exception e) {
+    		System.out.println(e);
     	}
     }
 
@@ -61,4 +68,5 @@ public class Vektor2D {
         else
             return false;
     }
+   
 }
