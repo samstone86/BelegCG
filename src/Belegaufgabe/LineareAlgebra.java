@@ -114,8 +114,8 @@ public class LineareAlgebra {
         return dot;
     }
 
-    public static void cosEquation(double[] a, double[] b) {
-
+    public static double cosEquation(double[] a, double[] b) {
+       return (dotProduct(a,b) /(length(a)*length(b)));
     }
 
     public static void sinEquation(double[] a, double[] b) {
@@ -123,22 +123,21 @@ public class LineareAlgebra {
     }
 
     public static double angleRad(double[] a, double[] b) {
-    	double result= (dotProduct(a, b)/ (length (a)* length(b)));
-    	return toRadians(acos(result));
+    	return degreeToRad(acos(cosEquation(a,b)));
     }
 
     public static double angleDegree(double[] a, double[] b) {
-    	double result= (dotProduct(a, b)/ (length (a)* length(b)));
-    	return acos(result);
+    	return acos(cosEquation(a,b));
     }
 
     public static double radToDegree(double a) { //Bogenmaß in Winkelgrad
        
-        return toDegrees(a);
+        return  ((360)/(2*Math.PI)*a);
     }
 
     public static double degreeToRad(double a) { // Winkelgrad in Bogenmaß
-        return toRadians(a);
+
+        return  ((2*Math.PI)/360*a);
     }
 
     public static double determinante(double[][] matrix, int n) {
@@ -198,6 +197,8 @@ public class LineareAlgebra {
        System.out.println(radToDegree(4.1));
        System.out.println(angleDegree(vek,vek2));
        System.out.println(angleRad(vek,vek2));
+        System.out.println(radToDegree(0.6));
+        System.out.println(degreeToRad(23));
        
     
     }
