@@ -3,69 +3,60 @@ package Belegaufgabe;
 import static java.lang.Math.*;
 
 public class Vektor2D {
+	public double x, y;
 
-    private Vektor2D() {}
+	Vektor2D(double x, double y) {}
 
-    public static double[] add(double[] a, double[] b) {
-        double[] ergAdd = new double[2];
-        for (int i = 0; i < a.length; i++)
-            ergAdd[i] = a[i] + b[i];
-        return ergAdd;
+    public void add(Vektor2D v) {
+    	if (this.length() != v.length())
+    		//return null;
+    	
+        this.x += v.x;
+        this.y += v.y;
     }
 
-    public static double[] sub(double[] a, double[] b) {
-        double[] ergSub = new double[2];
-        for (int i = 0; i < a.length; i++)
-            ergSub[i] = a[i] - b[i];
-        return ergSub;
+    public void sub(Vektor2D v) {
+        this.x -= v.x;
+        this.y -= v.y;
     }
 
-    public static double[] mult(double[] a, double s) {
-        double[] ergMult = new double[2];
-        for (int i = 0; i < a.length; i++)
-            ergMult[i] = a[i] * s;
-        return ergMult;
+    public void mult(double s) {
+        this.x *= s;
+        this.y *= s;
     }
 
-    public static double[] div(double[] a, double s) {
-        double[] ergDiv = new double[2];
-        for (int i = 0; i < a.length; i++)
-            ergDiv[i] = a[i] / s;
-        return ergDiv;
+    public void div(double s) {
+    	if (s != 0) {    		
+    		this.x /= s;
+    		this.y /= s;
+    	}
     }
 
-    public static boolean isEqual(double[] a, double[] b) {
-        if ((a[0] == b[0]) && (a[1] == b[1]))
-            return true;
-        else
-            return false;
+    public boolean isEqual(Vektor2D v) {      
+        return ((this.x == v.x) && (this.y == v.y));
     }
 
-    public static boolean isNotEqual(double[] a, double[] b) {
-        return !isEqual(a,b);
+    public boolean isNotEqual(Vektor2D v) {
+        return !isEqual(v);
     }
 
-    public static double length(double[] a) {
-        double len = sqrt(pow(a[0], 2) + pow(a[1], 2));
-        return len;
+    public double length() {
+        return (sqrt(pow(this.x, 2) + pow(this.y, 2)));
     }
 
-    public static double[] normalize(double[] a) {
-        double l = length(a);
-        double[] norm = new double[2];
-        for (int i = 0; i < a.length; i++) {
-            norm[i] = (1 / l) * a[i];
-        }
-        return norm;
+    public void normalize() {
+        double l = this.length();
+        this.x = (1 / l) * this.x;
+        this.y = (1 / l) * this.y;
     }
 
-    public static void setPosition(double[] a, double new_x, double new_y) {
-            a[0] = new_x;
-            a[1] = new_y; // Ist das so gemeint mit den Parametern?
+    public void setPosition(double new_x, double new_y) {
+            this.x = new_x;
+            this.y = new_y;
     }
 
-    public static boolean isNullVector(double[] a) {
-        if (a[0] == 0 && a[1] == 0)
+    public boolean isNullVector(Vektor2D v) {
+        if (this.x == 0 && this.y == 0)
             return true;
         else
             return false;
