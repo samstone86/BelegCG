@@ -47,46 +47,32 @@ public class LineareAlgebra {
         return new Vektor2D(v1.x/s, v1.y/s);
     }
 
-    public static void isEqual(double[] a, double[] b) {
-    	int c = 0;
-        if (a.length == b.length) {
-            for (int i = 0; i < a.length; i++)
-                if (a[i] == b[i])
-                	c++;                	
-        }
-        if (c == 3)
-        	System.out.println("Vektoren sind gleich!");
-        else
-        	System.out.println("Vektoren sind nicht gleich!");        
-    }
-
-    public static void isNotEqual(double[] a, double[] b) {
+    public static boolean isEqual(Vektor2D v1, Vektor2D v2) {
+        return (v1.x==v2.x && v1.y==v2.y);
 
     }
 
-    public static double length(double[] a) {
-        double len = sqrt(pow(a[0], 2) + pow(a[1], 2) + pow(a[2], 2));
-        return len;
+    public static boolean isNotEqual(Vektor2D v1, Vektor2D v2) {
+         return !isEqual(v1,v2);
     }
 
-    public static double[] normalize(double[] a) {
-        double l = length(a);
-        double[] norm = new double[3];
-        for (int i = 0; i < a.length; i++) {
-            norm[i] = (1 / l) * a[i];
-        }
-        return norm;
+    public static double length(Vektor2D v1) {
+        return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)));
     }
 
-    public static double euklDistance(double x1, double x2, double y1, double y2) {
+    public static Vektor2D normalize(Vektor2D v1) {
+        double l = length(v1);
+        return new Vektor2D(((1 / l)* v1.x), ((1 / l)* v1.y));
+    }
+
+    public static double euklDistance(Vektor2D v1, Vektor2D v2) {
         /* euklDistance 2D pow = Potenzieren*/
-        double eukl   = sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
-        return eukl;
+        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
+
     }
 
-    public static double manhattanDistance(double x0, double x1, double y0, double y1) {
-        double dist = Math.abs(x1 - x0) + Math.abs(y1 - y0);
-        return dist;
+    public static double manhattanDistance(Vektor2D v1, Vektor2D v2) {
+        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
     }
 
     public static double[] crossProduct(double[] a, double[] b) {
@@ -96,27 +82,30 @@ public class LineareAlgebra {
         cross[2] = a[0] * b[2] - a[1] * b[0];
         return cross;
     }
-    public static double dotProduct(double[] a, double[] b) { //Skalarprodukt
-        double dot = 0.0;
-        for (int i = 0; i < a.length; i++)
-            dot += a[i] * b[i];
-        return dot;
+    public static double dotProduct(Vektor2D v1, Vektor2D v2) { //Skalarprodukt
+        return v1.x*v2.x+v1.y*v2.y;
+
+    }
+    public static double dotProduct(Vektor3D v1, Vektor3D v2, Vektor3D v3) { //Skalarprodukt
+        return v1.x*v2.x*v3.x+v1.y*v2.y*v3.y+v1.z*v2.z*v3.z;
     }
 
-    public static double cosEquation(double[] a, double[] b) {
-       return (dotProduct(a,b) /(length(a)*length(b)));
+    public static double cosEquation(Vektor2D v1, Vektor2D v2) {
+       return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
 
-    public static void sinEquation(double[] a, double[] b) {
-            return (determinante()/(length(a)*length(b)));
+    public static double sinEquation(Vektor2D v1, Vektor2D v2) {
+            return (determinante()/(length(v1)*length(v2)));
     }
 
-    public static double angleRad(double[] a, double[] b) {
-    	return degreeToRad(acos(cosEquation(a,b)));
+    public static double angleRad(Vektor2D v1, Vektor2D v2) {
+
+        return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
-    public static double angleDegree(double[] a, double[] b) {
-    	return acos(cosEquation(a,b));
+    public static double angleDegree(Vektor2D v1, Vektor2D v2) {
+
+        return acos(cosEquation(v1,v2));
     }
 
     public static double radToDegree(double rad) { //Bogenmaß in Winkelgrad
@@ -157,29 +146,22 @@ public class LineareAlgebra {
         return det;
     }
 
-    public static double abs(double[] a) {
-        double ab = length(a);
-    	return ab;
+    public static double abs(Vektor2D v1) {
+    	return length(v1);
     }
 
-    public static void show(double[] a) {
-        	/*System.out.println(a.length);
-    	switch (a.length-1){
-        case 1:
-        	System.out.println("[" + a[0] + "]"); break;
-        case 2: 
-        	System.out.println("[" + a[0] + "]");
-        	System.out.println("[" + a[1] + "]"); break;
-        case 3:
-        	System.out.println("[" + a[0] + "]");
-        	System.out.println("[" + a[1] + "]");
-        	System.out.println("[" + a[2] + "]"); break;
-        }*/
-        for (int i=0; i < a.length; i ++){
-            System.out.println("[" + a[i] + "]");
-        }
+    public static void show(Vektor2D v1) {
+
+        	System.out.println("[" + v1.x + "]");
+        	System.out.println("[" + v1.y + "]");
+
     }
-    
+    public static void show(Vektor3D v1) {
+        System.out.println("[" + v1.x + "]");
+        System.out.println("[" + v1.y + "]");
+        System.out.println("[" + v1.z + "]");
+    }
+
     public static void main(String args[]){
        
        double vek[]={3,4,9};
