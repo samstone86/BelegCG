@@ -25,7 +25,7 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-    	
+
     		this.x *= s;
         	this.y *= s;
 
