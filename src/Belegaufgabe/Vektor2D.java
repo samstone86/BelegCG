@@ -25,21 +25,17 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-    	try {
+    	
     		this.x *= s;
         	this.y *= s;
-    	} catch (Exception e) {
-    		System.out.println(e);
-    	}
+
     }
 
     public void div(double s) {
-    	try {    		
+
     		this.x /= s;
     		this.y /= s;
-    	} catch (Exception e) {
-    		System.out.println(e);
-    	}
+
     }
 
     public boolean isEqual(Vektor2D v) {      
