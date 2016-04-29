@@ -27,8 +27,14 @@ public class Vektor2D {
     }
 
     public void div(double s) {
+    	//Experiment
+    	try{
     	this.x /= s;
     	this.y /= s;
+    	} catch(ArithmeticException e){
+    	      System.out.print("error " + "Divided by 0");
+    	      e.printStackTrace();
+        }
     }
 
     public boolean isEqual(Vektor2D v) {      
