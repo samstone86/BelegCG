@@ -11,9 +11,7 @@ public class Vektor3D {
         this.z=z;
     }
 
-    public void add(Vektor3D v) {
-    	if (this.length() != v.length())
-    		//return null;
+    public void add(Vektor3D v) {   // Gleiche länge / double.MAX_LENGTH testen
         this.x += v.x;
         this.y += v.y;
         this.z += v.z;
@@ -32,11 +30,9 @@ public class Vektor3D {
     }
 
     public void div(double s) {
-    	if (s != 0) {    		
-    		this.x /= s;
-    		this.y /= s;
-    		this.z /= s;
-    	}
+    	this.x /= s;
+    	this.y /= s;
+    	this.z /= s;
     }
 
     public boolean isEqual(Vektor3D v) {      
@@ -59,15 +55,12 @@ public class Vektor3D {
     }
 
     public void setPosition(double new_x, double new_y, double new_z) {
-            this.x = new_x;
-            this.y = new_y;
-            this.z = new_z;
+        this.x = new_x;
+        this.y = new_y;
+        this.z = new_z;
     }
 
     public boolean isNullVector(Vektor3D v) {
-        if (this.x == 0 && this.y == 0 && this.z == 0)
-            return true;
-        else
-            return false;
+        return (this.x == 0 && this.y == 0 && this.z == 0);
     }
 }

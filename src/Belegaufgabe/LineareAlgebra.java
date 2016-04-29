@@ -2,7 +2,6 @@ package Belegaufgabe;
 
 import static java.lang.Math.*;
 
-
 public class LineareAlgebra {
 
     private LineareAlgebra() {}
@@ -10,42 +9,17 @@ public class LineareAlgebra {
     public static Vektor2D add(Vektor2D v1, Vektor2D v2) {
         return new Vektor2D(v1.x+v2.x, v1.y+v2.y);
     }
+
     public static Vektor3D add(Vektor3D v1, Vektor3D v2) {
         return new Vektor3D(v1.x+v2.x, v1.y+v2.y, v1.z+v2.z);
     }
 
-
     public static Vektor2D sub(Vektor2D v1, Vektor2D v2) {
-
-
-        /*if (a.length == b.length) {
-            for (int i = 0; i < a.length; i++)
-                erg[i] = a[i] - b[i];
-        }
-        else if (a.length > b.length) {
-            for (int i = 0; i < b.length; i++)
-                erg[i] = a[i] - b[i];
-            for (int i=b.length; i< a.length; i++){
-           	 	erg[i]= a[i] - 0;
-            }
-        }
-        else if (a.length < b.length) {
-            for (int i = 0; i < a.length; i++)
-                erg[i] = a[i] - b[i];
-            for (int i=a.length; i< b.length; i++){
-           	 	erg[i]= 0 -b[i];
-            }
-        }
-        show(erg); */
-
         return new Vektor2D(v1.x-v2.x, v1.y-v2.y);
-
     }
 
     public static Vektor3D sub(Vektor3D v1, Vektor3D v2) {
-
         return new Vektor3D(v1.x-v2.x, v1.y-v2.y, v1.z-v2.z);
-
     }
 
     public static Vektor2D mult(Vektor2D v1, double s) {
@@ -66,14 +40,11 @@ public class LineareAlgebra {
 
     public static boolean isEqual(Vektor2D v1, Vektor2D v2) {
         return (v1.x==v2.x && v1.y==v2.y);
-
     }
 
     public static boolean isEqual(Vektor3D v1, Vektor3D v2) {
         return (v1.x==v2.x && v1.y==v2.y && v1.z== v2.z);
-
     }
-
 
     public static boolean isNotEqual(Vektor2D v1, Vektor2D v2) {
          return !isEqual(v1,v2);
@@ -104,13 +75,11 @@ public class LineareAlgebra {
     public static double euklDistance(Vektor2D v1, Vektor2D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
-
     }
 
     public static double euklDistance(Vektor3D v1, Vektor3D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y),2 )+pow((v1.z - v2.z), 2));
-
     }
     public static double manhattanDistance(Vektor2D v1, Vektor2D v2) {
         return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
@@ -129,8 +98,8 @@ public class LineareAlgebra {
     }
     public static double dotProduct(Vektor2D v1, Vektor2D v2) { //Skalarprodukt
         return v1.x*v2.x+v1.y*v2.y;
-
     }
+
     public static double dotProduct(Vektor3D v1, Vektor3D v2) { //Skalarprodukt
         return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z;
     }
@@ -148,22 +117,18 @@ public class LineareAlgebra {
     } */
 
     public static double angleRad(Vektor2D v1, Vektor2D v2) {
-
         return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
     public static double angleRad(Vektor3D v1, Vektor3D v2) {
-
         return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
     public static double angleDegree(Vektor2D v1, Vektor2D v2) {
-
         return acos(cosEquation(v1,v2));
     }
 
     public static double angleDegree(Vektor3D v1, Vektor3D v2) {
-
         return acos(cosEquation(v1,v2));
     }
 
@@ -214,11 +179,10 @@ public class LineareAlgebra {
     }
 
     public static void show(Vektor2D v1) {
-
-        	System.out.println("[" + v1.x + "]");
-        	System.out.println("[" + v1.y + "]");
-
+       	System.out.println("[" + v1.x + "]");
+       	System.out.println("[" + v1.y + "]");
     }
+
     public static void show(Vektor3D v1) {
         System.out.println("[" + v1.x + "]");
         System.out.println("[" + v1.y + "]");
@@ -226,18 +190,14 @@ public class LineareAlgebra {
     }
 
     public static void main(String args[]){
-       
-       double vek[]={3,4,9};
-       double vek2[]={2,12,50};
+        double vek[]={3,4,9};
+        double vek2[]={2,12,50};
         Vektor2D a= new Vektor2D(2,3);
         show(a);
-       System.out.println(radToDegree(4.1));
+        System.out.println(radToDegree(4.1));
       /* System.out.println(angleDegree(vek,vek2));
        System.out.println(angleRad(vek,vek2));
         System.out.println(radToDegree(0.6));
         System.out.println(degreeToRad(23));*/
-       
-    
     }
-    
 }

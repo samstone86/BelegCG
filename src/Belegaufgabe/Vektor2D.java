@@ -12,9 +12,6 @@ public class Vektor2D {
     }
 
     public void add(Vektor2D v) {
-    	if (this.length() != v.length())
-    		//return null;
-    	
         this.x += v.x;
         this.y += v.y;
     }
@@ -25,17 +22,13 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-
-    		this.x *= s;
-        	this.y *= s;
-
+    	this.x *= s;
+        this.y *= s;
     }
 
     public void div(double s) {
-
-    		this.x /= s;
-    		this.y /= s;
-
+    	this.x /= s;
+    	this.y /= s;
     }
 
     public boolean isEqual(Vektor2D v) {      
@@ -62,10 +55,6 @@ public class Vektor2D {
     }
 
     public boolean isNullVector(Vektor2D v) {
-        if (this.x == 0 && this.y == 0)
-            return true;
-        else
-            return false;
+        return (this.x == 0 && this.y == 0);
     }
-   
 }
