@@ -4,9 +4,9 @@ import static java.lang.Math.*;
 
 public class Vektor2D {
 
-	public double x, y;
+    public double x, y;
 
-	public Vektor2D(double x, double y) {
+    public Vektor2D(double x, double y) {
         this.x=x;
         this.y=y;
     }
