@@ -1,5 +1,7 @@
 package Belegaufgabe;
 
+import java.util.Random;
+
 import static java.lang.Math.*;
 
 public class Vektor3D {
@@ -49,10 +51,17 @@ public class Vektor3D {
     }
 
     public void normalize() {
-        double l = this.length();
-        this.x = (1 / l) * this.x;
-        this.y = (1 / l) * this.y;
-        this.z = (1 / l) * this.z;
+        if (this.isNullVector()) {
+            Random rdm= new Random();
+            this.x = rdm.nextDouble() * 2 -1;
+            this.y = rdm.nextDouble() * 2 -1;
+            this.z = rdm.nextDouble() * 2 -1;
+        } else {
+            double l = this.length();
+            this.x = (1 / l) * this.x;
+            this.y = (1 / l) * this.y;
+            this.z = (1 / l) * this.z;
+        }
     }
 
     public void setPosition(double new_x, double new_y, double new_z) {

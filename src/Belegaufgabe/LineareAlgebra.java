@@ -65,11 +65,10 @@ public class LineareAlgebra {
         return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)+ pow(v1.z,2)));
     }
 
-    public static Vektor2D normalize(Vektor2D v1) { //kleine werte nehmen
-
+    public static Vektor2D normalize(Vektor2D v1) {
         if (v1.isNullVector()) {
             Random rdm= new Random();
-            v1.x = rdm.nextDouble() * 2 -1;
+            v1.x = rdm.nextDouble() * 2 -1;         // random Werte zwischen [-1, 1]
             v1.y = rdm.nextDouble() * 2 -1;
             return new Vektor2D(v1.x, v1.y);
         }
@@ -82,7 +81,7 @@ public class LineareAlgebra {
     public static Vektor3D normalize(Vektor3D v1) {
         if (v1.isNullVector()) {
             Random rdm= new Random();
-            v1.x = rdm.nextDouble() * 2 -1;
+            v1.x = rdm.nextDouble() * 2 -1;         // random Werte zwischen [-1, 1]
             v1.y = rdm.nextDouble() * 2 -1;
             v1.z = rdm.nextDouble() * 2 -1;
             return new Vektor3D(v1.x, v1.y, v1.z);
@@ -194,7 +193,7 @@ public class LineareAlgebra {
       
         Vektor2D a= new Vektor2D(2,3);
         Vektor3D v0= new Vektor3D(-1,2,3);
-        Vektor3D v1= new Vektor3D(4,50,6);
+        Vektor3D v1= new Vektor3D(0,0,0);
         Vektor3D v2= new Vektor3D(7,8,9);
         Vektor2D v3= new Vektor2D(5,2);
         Vektor2D v4= new Vektor2D(2,3);
@@ -212,6 +211,9 @@ public class LineareAlgebra {
         System.out.println(sinEquation(v3,v4));
         System.out.println("hasüas");
         System.out.println(degreeToRad(720));
+
+        normalize(v1);
+        show(v1);
         
     }
 }
