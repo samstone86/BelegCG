@@ -3,6 +3,7 @@ package Belegaufgabe;
 import java.util.Random;
 
 import static java.lang.Math.*;
+import Belegaufgabe.Vektor2D.*;
 
 public class LineareAlgebra {
 
@@ -65,15 +66,31 @@ public class LineareAlgebra {
     }
 
     public static Vektor2D normalize(Vektor2D v1) { //kleine werte nehmen
-        double l = length(v1);
-        Random rndm= new Random();
-        //return rg.nextDouble()*2-1;   //next double is between 0 and 1
-        return new Vektor2D(((1 / l)* v1.x), ((1 / l)* v1.y));
+
+        if (v1.isNullVector()) {
+            Random rdm= new Random();
+            v1.x = rdm.nextDouble() * 2 -1;
+            v1.y = rdm.nextDouble() * 2 -1;
+            return new Vektor2D(v1.x, v1.y);
+        }
+        else {
+            double l = length(v1);
+            return new Vektor2D(((1 / l) * v1.x), ((1 / l) * v1.y));
+        }
     }
 
     public static Vektor3D normalize(Vektor3D v1) {
+        if (v1.isNullVector()) {
+            Random rdm= new Random();
+            v1.x = rdm.nextDouble() * 2 -1;
+            v1.y = rdm.nextDouble() * 2 -1;
+            v1.z = rdm.nextDouble() * 2 -1;
+            return new Vektor3D(v1.x, v1.y, v1.z);
+        }
+        else {
         double l = length(v1);
         return new Vektor3D(((1 / l)* v1.x), ((1 / l)* v1.y),((1 / l)* v1.z));
+        }
     }
 
     public static double euklDistance(Vektor2D v1, Vektor2D v2) {

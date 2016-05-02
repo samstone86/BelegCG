@@ -60,7 +60,7 @@ public class Vektor2D {
             this.y = new_y;
     }
 
-    public boolean isNullVector(Vektor2D v) {
+    public boolean isNullVector() {
         return (this.x == 0 && this.y == 0);
     }
 }

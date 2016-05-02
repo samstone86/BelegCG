@@ -61,7 +61,7 @@ public class Vektor3D {
         this.z = new_z;
     }
 
-    public boolean isNullVector(Vektor3D v) {
+    public boolean isNullVector() {
         return (this.x == 0 && this.y == 0 && this.z == 0);
     }
 }
