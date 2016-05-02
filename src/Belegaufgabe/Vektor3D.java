@@ -7,11 +7,24 @@ import static java.lang.Math.*;
 public class Vektor3D {
 
     public double x, y, z;
+    private double sx, sy , sz;
 
     public Vektor3D(double x, double y, double z) {
         this.x=x;
         this.y=y;
         this.z=z;
+    }
+
+    public void saveState() {
+        sx = this.x;
+        sy = this.y;
+        sz = this.z;
+    }
+
+    public void restoreState() {
+        this.x = sx;
+        this.y = sy;
+        this.z = sz;
     }
 
     public void add(Vektor3D v) {   // Gleiche länge / double.MAX_LENGTH testen
@@ -27,15 +40,25 @@ public class Vektor3D {
     }
 
     public void mult(double s) {
-        this.x *= s;
-        this.y *= s;
-        this.z *= s;
+        saveState();
+        if (s != 0) {
+            this.x *= s;
+            this.y *= s;
+            this.z *= s;
+        } else {
+            restoreState();
+        }
     }
 
     public void div(double s) {
-    	this.x /= s;
-    	this.y /= s;
-    	this.z /= s;
+        saveState();
+        if (s != 0) {
+            this.x /= s;
+            this.y /= s;
+            this.z /= s;
+        } else {
+            restoreState();
+        }
     }
 
     public boolean isEqual(Vektor3D v) {      
