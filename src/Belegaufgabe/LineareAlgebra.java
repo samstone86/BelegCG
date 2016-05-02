@@ -1,5 +1,7 @@
 package Belegaufgabe;
 
+import java.util.Random;
+
 import static java.lang.Math.*;
 
 public class LineareAlgebra {
@@ -64,6 +66,8 @@ public class LineareAlgebra {
 
     public static Vektor2D normalize(Vektor2D v1) { //kleine werte nehmen
         double l = length(v1);
+        Random rndm= new Random();
+        //return rg.nextDouble()*2-1;   //next double is between 0 and 1
         return new Vektor2D(((1 / l)* v1.x), ((1 / l)* v1.y));
     }
 
