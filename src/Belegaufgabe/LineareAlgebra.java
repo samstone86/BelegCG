@@ -62,7 +62,7 @@ public class LineareAlgebra {
         return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)+ pow(v1.z,2)));
     }
 
-    public static Vektor2D normalize(Vektor2D v1) {
+    public static Vektor2D normalize(Vektor2D v1) { //kleine werte nehmen
         double l = length(v1);
         return new Vektor2D(((1 / l)* v1.x), ((1 / l)* v1.y));
     }
@@ -138,13 +138,15 @@ public class LineareAlgebra {
     }
 
     public static double degreeToRad(double deg) { // Winkelgrad in Bogenmaß
-        return  ((2*Math.PI)/360*deg);
+        if (deg % 360 == 0)
+            return  ((2*Math.PI));
+        return  ((2*Math.PI)/360*(deg%360));
     }
 
     public static double determinante(Vektor2D v1, Vektor2D v2) {   
     	return (v1.x*v2.y-v2.x*v1.y);
     }
-    public static double determinante(Vektor3D v1, Vektor3D v2, Vektor3D v3) {   //neu!
+    public static double determinante(Vektor3D v1, Vektor3D v2, Vektor3D v3) {   //ist wohl eigentlich unnötig
         return (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
     }
@@ -187,6 +189,8 @@ public class LineareAlgebra {
         System.out.println(length(v3));
         System.out.println(length(v4));
         System.out.println(sinEquation(v3,v4));
+        System.out.println("hasüas");
+        System.out.println(degreeToRad(720));
         
     }
 }
