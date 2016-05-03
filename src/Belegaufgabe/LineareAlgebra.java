@@ -3,7 +3,6 @@ package Belegaufgabe;
 import java.util.Random;
 
 import static java.lang.Math.*;
-import Belegaufgabe.Vektor2D.*;
 
 public class LineareAlgebra {
 
@@ -11,6 +10,7 @@ public class LineareAlgebra {
 
     public static Vektor2D add(Vektor2D v1, Vektor2D v2) {
         return new Vektor2D(v1.x+v2.x, v1.y+v2.y);
+        // v1.add(v2); <- so und void statt Vektor2D ?
     }
 
     public static Vektor3D add(Vektor3D v1, Vektor3D v2) {

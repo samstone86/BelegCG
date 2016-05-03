@@ -40,19 +40,14 @@ public class Vektor3D {
     }
 
     public void mult(double s) {
-        saveState();
-        if (s != 0) {
-            this.x *= s;
-            this.y *= s;
-            this.z *= s;
-        } else {
-            restoreState();
-        }
+        this.x *= s;
+        this.y *= s;
+        this.z *= s;
     }
 
     public void div(double s) {
         saveState();
-        if (s != 0) {
+        if (s != 0 || !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || this.z == Double.MAX_VALUE)) {
             this.x /= s;
             this.y /= s;
             this.z /= s;
