@@ -111,9 +111,9 @@ public class LineareAlgebra {
 
     public static Vektor3D crossProduct(Vektor3D v1, Vektor3D v2) {  
     	Vektor3D erg= new Vektor3D(0,0,0);
-        erg.x= v1.y*v2.z-v1.z*v2.y; 
-        erg.y= v1.z*v2.x-v1.x*v2.z; 
-        erg.z= v1.x*v2.y-v1.y*v2.x;
+        erg.x= v1.z*v2.y - v1.y*v2.z;
+        erg.y= v1.x*v2.z - v1.z*v2.x;
+        erg.z= v1.y*v2.x - v1.x*v2.y;
         return erg;
     }
     
