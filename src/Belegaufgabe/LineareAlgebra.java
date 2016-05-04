@@ -185,7 +185,7 @@ public class LineareAlgebra {
     	return (v1.x*v2.y-v2.x*v1.y);
     }
 
-    public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃ¶tig
+    public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÂ¶tig
         return (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
     }
@@ -217,7 +217,7 @@ public class LineareAlgebra {
         Vektor3D v2= new Vektor3D(7,8,9);
         Vektor2D v3= new Vektor2D(Double.MAX_VALUE,Double.MAX_VALUE);
         Vektor2D v4= new Vektor2D(2,3);
-        double s = -0.5;
+        double s = 8;
         show(a);
         System.out.println(radToDegree(4.1));
       /* System.out.println(angleDegree(vek,vek2));
@@ -235,6 +235,7 @@ public class LineareAlgebra {
         v3.mult(s);
         show(v3);
         System.out.println(Double.MAX_VALUE);
+        System.out.println(Double.MIN_VALUE);
        
     }
 }
