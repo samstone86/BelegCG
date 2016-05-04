@@ -21,16 +21,22 @@ public class Vektor3D {
         sz = this.z;
     }
 
-    public void restoreState() {
+    public void restoreState(String err) {
         this.x = sx;
         this.y = sy;
         this.z = sz;
+        System.err.println(err);
     }
 
-    public void add(Vektor3D v) {   // Gleiche länge / double.MAX_LENGTH testen
-        this.x += v.x;
-        this.y += v.y;
-        this.z += v.z;
+    public void add(Vektor3D v) {   // Gleiche lÃ¤nge / double.MAX_LENGTH testen
+    	saveState();
+    	if(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || this.z == Double.MAX_VALUE || v.x == Double.MAX_VALUE || v.y == Double.MAX_VALUE || v.z == Double.MAX_VALUE) {
+    		restoreState("ERROR: Double.MAX_VALUE !");
+    	} else {
+    		this.x += v.x;
+    		this.y += v.y;
+    		this.z += v.z;
+    	}
     }
 
     public void sub(Vektor3D v) {
@@ -40,9 +46,14 @@ public class Vektor3D {
     }
 
     public void mult(double s) {
-        this.x *= s;
-        this.y *= s;
-        this.z *= s;
+    	saveState();
+    	if ((s < 1 || s > -1) && !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || this.z == Double.MAX_VALUE)) {
+    		this.x *= s;
+    		this.y *= s;
+    		this.z *= s;
+    	} else {
+            restoreState("Speicherüberlauf Double.MAX_VALUE");
+        }
     }
 
     public void div(double s) {
@@ -52,7 +63,7 @@ public class Vektor3D {
             this.y /= s;
             this.z /= s;
         } else {
-            restoreState();
+            restoreState("Error ");
         }
     }
 
