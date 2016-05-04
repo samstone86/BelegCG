@@ -14,47 +14,49 @@ public class Vektor2D {
         this.y=y;
     }
     
-    public void saveState() {
+    private void saveState() {
         sx = this.x;
         sy = this.y;
     }
 
-    public void restoreState(String err) {
+    private void restoreState(String err) {
         this.x = sx;
         this.y = sy;
         System.err.println(err);
     }
     
-    public void checkMaxValue () {
-		if(this.x > Double.MAX_VALUE || this.x > Double.MAX_VALUE) {
-			restoreState("Speicherueberlauf Double.MAX_VALUE");
-		}
+    private void checkMaxValue () {
+		if(this.x > Double.MAX_VALUE || this.x > Double.MAX_VALUE)
+			restoreState("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
+    }
+    
+    private void checkMinValue () {
+		if(this.x < Double.MIN_VALUE || this.x < Double.MIN_VALUE)
+			restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
 
     public void add(Vektor2D v) {
     	saveState();
-    	if(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || v.x == Double.MAX_VALUE || v.y == Double.MAX_VALUE) {
-    		restoreState("ERROR: Double.MAX_VALUE !");
-    	} else {
-    		this.x += v.x;
-        	this.y += v.y;
-    	}
+    	this.x += v.x;
+        this.y += v.y;
+        checkMaxValue();
     }
 
     public void sub(Vektor2D v) {
+    	saveState();
         this.x -= v.x;
         this.y -= v.y;
+        checkMinValue();
     }
 
     public void mult(double s) {
     	saveState();
-    	//if ((s > 1 || s < -1) && !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
     	if (s >= -1) {
     		this.x *= s;
     		this.y *= s;
     		checkMaxValue();
     	} else {
-            restoreState("Speicherueberlauf Double.MIN_VALUE");
+            restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
@@ -65,7 +67,7 @@ public class Vektor2D {
             this.y /= s;
             checkMaxValue();
         } else {
-            restoreState("Division duch 0 !!!");
+            restoreState("ERROR: Division durch 0 !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
