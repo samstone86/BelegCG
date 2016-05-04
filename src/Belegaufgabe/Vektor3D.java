@@ -57,7 +57,7 @@ public class Vektor3D {
     }
 
     public void div(double s) {
-        if (s != 0) {
+        if (s != 0.0) {
             this.x /= s;
             this.y /= s;
             this.z /= s;
