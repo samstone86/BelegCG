@@ -7,67 +7,57 @@ import static java.lang.Math.*;
 public class Vektor2D {
 
     public double x, y;
-    private double sx, sy;
 
     public Vektor2D(double x, double y) {
         this.x=x;
         this.y=y;
     }
-    
-    private void saveState() {
-        sx = this.x;
-        sy = this.y;
-    }
 
-    private void restoreState(String err) {
-        this.x = sx;
-        this.y = sy;
+    private void errorSetZero(String err) {
+        this.x = 0.0;
+        this.y = 0.0;
         System.err.println(err);
     }
     
     private void checkMaxValue () {
-		if(this.x > Double.MAX_VALUE || this.x > Double.MAX_VALUE)
-			restoreState("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
+		if(this.x == Double.MAX_VALUE || this.x == Double.MAX_VALUE)
+			errorSetZero("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
     
     private void checkMinValue () {
-		if(this.x < Double.MIN_VALUE || this.x < Double.MIN_VALUE)
-			restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
+		if(this.x == Double.MIN_VALUE || this.x == Double.MIN_VALUE)
+			errorSetZero("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
 
     public void add(Vektor2D v) {
-    	saveState();
     	this.x += v.x;
         this.y += v.y;
         checkMaxValue();
     }
 
     public void sub(Vektor2D v) {
-    	saveState();
         this.x -= v.x;
         this.y -= v.y;
         checkMinValue();
     }
 
     public void mult(double s) {
-    	saveState();
     	if (s >= -1) {
     		this.x *= s;
     		this.y *= s;
     		checkMaxValue();
     	} else {
-            restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
+    		errorSetZero("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
     public void div(double s) {
-        saveState();
         if (s != 0) {
             this.x /= s;
             this.y /= s;
             checkMaxValue();
         } else {
-            restoreState("ERROR: Division durch 0 !\nStelle Vektor wird wiederhergestellt !");
+        	errorSetZero("ERROR: Division durch 0 !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
