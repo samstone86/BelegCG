@@ -8,9 +8,16 @@ public class LineareAlgebra {
 
     private LineareAlgebra() {}
 
-    public static Vektor2D add(Vektor2D v1, Vektor2D v2) {
-        return new Vektor2D(v1.x+v2.x, v1.y+v2.y);
-        // v1.add(v2); <- so und void statt Vektor2D ?
+    public static Vektor2D add(final Vektor2D v1, final Vektor2D v2) {
+        Vektor2D result = new Vektor2D();
+        result.add(v1);
+        result.add(v2);
+        return result;
+
+        v1= new Vektor2D(1,1);
+        v2 = new Vektor2D(6,6);
+        Vektor2D summe = LinAlg.add(v1,v2)
+        
     }
 
     public static Vektor3D add(Vektor3D v1, Vektor3D v2) {
