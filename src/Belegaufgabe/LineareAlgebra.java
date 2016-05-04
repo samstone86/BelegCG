@@ -116,14 +116,14 @@ public class LineareAlgebra {
 
     public static double euklDistance(final Vektor3D v1, final Vektor3D v2) {
         /* euklDistance 2D pow = Potenzieren*/
-        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y),2 )+pow((v1.z - v2.z), 2));
+        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2) + pow((v1.z - v2.z), 2));
     }
     public static double manhattanDistance(final Vektor2D v1, final Vektor2D v2) {
         return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
     }
 
     public static double manhattanDistance(final Vektor3D v1, final Vektor3D v2) {
-        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y)+ Math.abs(v1.z - v2.z);
+        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y) + Math.abs(v1.z - v2.z);
     }
 
     public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
@@ -135,54 +135,53 @@ public class LineareAlgebra {
     }
     
     public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
-        return v1.x*v2.x+v1.y*v2.y;
+        return v1.x*v2.x + v1.y*v2.y;
     }
 
     public static double dotProduct(final Vektor3D v1, final Vektor3D v2) { //Skalarprodukt
-        return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z;
+        return v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
     }
 
     public static double cosEquation(final Vektor2D v1, final Vektor2D v2) {
-       return (dotProduct(v1,v2) /(length(v1)*length(v2)));
+       return (dotProduct(v1, v2) /(length(v1)*length(v2)));
     }
 
     public static double cosEquation(final Vektor3D v1, final Vektor3D v2) {
-        return (dotProduct(v1,v2) /(length(v1)*length(v2)));
+        return (dotProduct(v1, v2) /(length(v1)*length(v2)));
     }
 
     public static double sinEquation(final Vektor2D v1, final Vektor2D v2) {  
-            return (determinante(v1,v2)/(length(v1)*length(v2)));
+            return (determinante(v1, v2)/(length(v1)*length(v2)));
     } 
     
     public static double angleRad(final Vektor2D v1, final Vektor2D v2) {
-        return degreeToRad(acos(cosEquation(v1,v2)));
+        return degreeToRad(acos(cosEquation(v1, v2)));
     }
 
     public static double angleRad(final Vektor3D v1, final Vektor3D v2) {
-        return degreeToRad(acos(cosEquation(v1,v2)));
+        return degreeToRad(acos(cosEquation(v1, v2)));
     }
 
     public static double angleDegree(final Vektor2D v1, final Vektor2D v2) {
-        return acos(cosEquation(v1,v2));
+        return acos(cosEquation(v1, v2));
     }
 
     public static double angleDegree(final Vektor3D v1, final Vektor3D v2) {
-        return acos(cosEquation(v1,v2));
+        return acos(cosEquation(v1, v2));
     }
 
     public static double radToDegree(double rad) { //Bogenmass in Winkelgrad
-        return  ((360)/(2*Math.PI)*rad);
+        return  ((360) / (2 * Math.PI) * rad);
     }
 
     public static double degreeToRad(double deg) { // Winkelgrad in Bogenmass
-        if (deg % 360 == 0) { 
-        	return  ((2*Math.PI)); 
-        }
-        return  ((2*Math.PI)/360*(deg%360));
+        if (deg % 360 == 0) 
+        	return  ((2 * Math.PI)); 
+        return  ((2 * Math.PI) / 360 * deg);
     }
 
     public static double determinante(final Vektor2D v1, final Vektor2D v2) {   
-    	return (v1.x*v2.y-v2.x*v1.y);
+    	return (v1.x*v2.y - v2.x*v1.y);
     }
 
     public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÆ’Ã‚Â¶tig
@@ -217,12 +216,9 @@ public class LineareAlgebra {
         Vektor3D v2= new Vektor3D(7,8,9);
         Vektor2D v3= new Vektor2D(Double.MAX_VALUE,Double.MAX_VALUE);
         Vektor2D v4= new Vektor2D(2,3);
-        double s = 8;
         show(a);
         System.out.println(radToDegree(4.1));
-      /* System.out.println(angleDegree(vek,vek2));
-       System.out.println(angleRad(vek,vek2));
-        System.out.println(radToDegree(0.6));
+      /*System.out.println(radToDegree(0.6));
         System.out.println(degreeToRad(23));*/
         show(crossProduct(v1,v2));
         System.out.println(determinante(v3,v4));
@@ -232,10 +228,8 @@ public class LineareAlgebra {
         System.out.println(sinEquation(v3,v4));
         System.out.println("hasas");
         System.out.println(degreeToRad(720));
-        v3.mult(s);
-        show(v3);
-        System.out.println(Double.MAX_VALUE);
         System.out.println(Double.MIN_VALUE);
+
        
     }
 }
