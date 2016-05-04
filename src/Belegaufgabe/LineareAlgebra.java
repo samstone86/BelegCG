@@ -128,9 +128,9 @@ public class LineareAlgebra {
 
     public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
     	Vektor3D erg= new Vektor3D(0,0,0);
-        erg.x = v1.z*v2.y - v1.y*v2.z;
-        erg.y = v1.x*v2.z - v1.z*v2.x;
-        erg.z = v1.y*v2.x - v1.x*v2.y;
+    	erg.x = v1.y*v2.z - v1.z*v2.y; 
+    	erg.y = v1.z*v2.x - v1.x*v2.z; 
+    	erg.z = v1.x*v2.y - v1.y*v2.x;
         return erg;
     }
     
@@ -185,7 +185,7 @@ public class LineareAlgebra {
     	return (v1.x*v2.y-v2.x*v1.y);
     }
 
-    public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÂ¶tig
+    public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÆ’Ã‚Â¶tig
         return (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
     }
