@@ -22,12 +22,12 @@ public class Vektor3D {
     }
     
     private void checkMaxValue () {
-		if(this.x == Double.MAX_VALUE || this.x == Double.MAX_VALUE || this.z == Double.MAX_VALUE)
+		if(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || this.z == Double.MAX_VALUE)
 			errorSetZero("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
     
     private void checkMinValue () {
-		if(this.x == Double.MIN_VALUE || this.x == Double.MIN_VALUE || this.z == Double.MIN_VALUE)
+		if(this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE || this.z == Double.MIN_VALUE)
 			errorSetZero("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
 
