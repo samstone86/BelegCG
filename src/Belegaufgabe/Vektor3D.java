@@ -7,7 +7,6 @@ import static java.lang.Math.*;
 public class Vektor3D {
 
     public double x, y, z;
-    private double sx, sy , sz;
 
     public Vektor3D(double x, double y, double z) {
         this.x=x;
@@ -15,31 +14,24 @@ public class Vektor3D {
         this.z=z;
     }
 
-    public void saveState() {
-        sx = this.x;
-        sy = this.y;
-        sz = this.z;
-    }
-
-    public void restoreState(String err) {
-        this.x = sx;
-        this.y = sy;
-        this.z = sz;
+    public void errorSetZero(String err) {
+        this.x = 0.0;
+        this.y = 0.0;
+        this.z = 0.0;
         System.err.println(err);
     }
     
     private void checkMaxValue () {
 		if(this.x == Double.MAX_VALUE || this.x == Double.MAX_VALUE || this.z == Double.MAX_VALUE)
-			restoreState("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
+			errorSetZero("ERROR: Speicherueberlauf Double.MAX_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
     
     private void checkMinValue () {
 		if(this.x == Double.MIN_VALUE || this.x == Double.MIN_VALUE || this.z == Double.MIN_VALUE)
-			restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
+			errorSetZero("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
     }
 
     public void add(Vektor3D v) {
-    	saveState();
     	this.x += v.x;
         this.y += v.y;
         this.z += v.z;
@@ -47,7 +39,6 @@ public class Vektor3D {
     }
 
     public void sub(Vektor3D v) {
-    	saveState();
         this.x -= v.x;
         this.y -= v.y;
         this.z -= v.z;
@@ -55,26 +46,24 @@ public class Vektor3D {
     }
 
     public void mult(double s) {
-    	saveState();
     	if (s >= -1) {
     		this.x *= s;
     		this.y *= s;
     		this.z *= s;
     		checkMaxValue();
     	} else {
-            restoreState("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
+    		errorSetZero("ERROR: Speicherueberlauf Double.MIN_VALUE !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
     public void div(double s) {
-        saveState();
         if (s != 0) {
             this.x /= s;
             this.y /= s;
             this.z /= s;
             checkMaxValue();
         } else {
-            restoreState("ERROR: Division durch 0 !\nStelle Vektor wird wiederhergestellt !");
+        	errorSetZero("ERROR: Division durch 0 !\nStelle Vektor wird wiederhergestellt !");
         }
     }
 
