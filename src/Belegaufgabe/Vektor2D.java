@@ -24,6 +24,12 @@ public class Vektor2D {
         this.y = sy;
         System.err.println(err);
     }
+    
+    public void checkMaxValue () {
+		if(this.x > Double.MAX_VALUE || this.x > Double.MAX_VALUE) {
+			restoreState("Speicherueberlauf Double.MAX_VALUE");
+		}
+    }
 
     public void add(Vektor2D v) {
     	saveState();
@@ -42,19 +48,22 @@ public class Vektor2D {
 
     public void mult(double s) {
     	saveState();
-    	if ((s < 1 || s > -1) && !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
+    	//if ((s > 1 || s < -1) && !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
+    	if (s >= -1) {
     		this.x *= s;
     		this.y *= s;
+    		checkMaxValue();
     	} else {
-            restoreState("Speicherüberlauf Double.MAX_VALUE");
+            restoreState("Speicherueberlauf Double.MIN_VALUE");
         }
     }
 
     public void div(double s) {
         saveState();
-        if (s != 0 || !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
+        if (s != 0) {
             this.x /= s;
             this.y /= s;
+            checkMaxValue();
         } else {
             restoreState("Division duch 0 !!!");
         }
