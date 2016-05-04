@@ -9,70 +9,80 @@ public class LineareAlgebra {
     private LineareAlgebra() {}
 
     public static Vektor2D add(final Vektor2D v1, final Vektor2D v2) {
-        Vektor2D result = new Vektor2D();
-        result.add(v1);
+        Vektor2D result = v1;
         result.add(v2);
         return result;
-
-        v1= new Vektor2D(1,1);
-        v2 = new Vektor2D(6,6);
-        Vektor2D summe = LinAlg.add(v1,v2)
-        
     }
 
-    public static Vektor3D add(Vektor3D v1, Vektor3D v2) {
-        return new Vektor3D(v1.x+v2.x, v1.y+v2.y, v1.z+v2.z);
+    public static Vektor3D add(final Vektor3D v1, final Vektor3D v2) {
+        Vektor3D result = v1;
+        result.add(v2);
+        return result;
     }
 
-    public static Vektor2D sub(Vektor2D v1, Vektor2D v2) {
-        return new Vektor2D(v1.x-v2.x, v1.y-v2.y);
+    public static Vektor2D sub(final Vektor2D v1, final Vektor2D v2) {
+        Vektor2D result = v1;
+        result.sub(v2);
+        return result;
     }
 
-    public static Vektor3D sub(Vektor3D v1, Vektor3D v2) {
-        return new Vektor3D(v1.x-v2.x, v1.y-v2.y, v1.z-v2.z);
+    public static Vektor3D sub(final Vektor3D v1, final Vektor3D v2) {
+        Vektor3D result = v1;
+        result.sub(v2);
+        return result;
     }
 
     public static Vektor2D mult(Vektor2D v1, double s) {
-    	return new Vektor2D(v1.x*s, v1.y*s);
+    	Vektor2D result = v1;
+        result.mult(s);
+        return result;
     }
 
-    public static Vektor3D mult(Vektor3D v1, double s) {
-        return new Vektor3D(v1.x*s, v1.y*s, v1.z*s);
+    public static Vektor3D mult(final Vektor3D v1, double s) {
+    	Vektor3D result = v1;
+        result.mult(s);
+        return result;
     }
 
-    public static Vektor2D div(Vektor2D v1, double s) {
-        return new Vektor2D(v1.x/s, v1.y/s);
+    public static Vektor2D div(final Vektor2D v1, double s) {
+    	Vektor2D result = v1;
+        result.div(s);
+        return result;
     }
 
-    public static Vektor3D div(Vektor3D v1, double s) {
-        return new Vektor3D(v1.x/s, v1.y/s, v1.z/s);
+    public static Vektor3D div(final Vektor3D v1, double s) {
+    	Vektor3D result = v1;
+        result.div(s);
+        return result;
     }
 
-    public static boolean isEqual(Vektor2D v1, Vektor2D v2) {
-        return (v1.x==v2.x && v1.y==v2.y);
+    public static boolean isEqual(final Vektor2D v1, final Vektor2D v2) {
+    	Vektor2D result = v1;
+        return result.isEqual(v2);
     }
 
-    public static boolean isEqual(Vektor3D v1, Vektor3D v2) {
-        return (v1.x==v2.x && v1.y==v2.y && v1.z== v2.z);
+    public static boolean isEqual(final Vektor3D v1, final Vektor3D v2) {
+    	Vektor3D result = v1;
+        return result.isEqual(v2);
     }
 
-    public static boolean isNotEqual(Vektor2D v1, Vektor2D v2) {
+    public static boolean isNotEqual(final Vektor2D v1, final Vektor2D v2) {
          return !isEqual(v1,v2);
     }
 
-    public static boolean isNotEqual(Vektor3D v1, Vektor3D v2) {
+    public static boolean isNotEqual(final Vektor3D v1, final Vektor3D v2) {
         return !isEqual(v1,v2);
     }
 
-    public static double length(Vektor2D v1) {
-        return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)));
+    public static double length(final Vektor2D v1) {
+    	return v1.length();
     }
 
-    public static double length(Vektor3D v1) {
-        return (sqrt(pow(v1.x, 2) + pow(v1.y, 2)+ pow(v1.z,2)));
+    public static double length(final Vektor3D v1) {
+    	return v1.length();
     }
 
-    public static Vektor2D normalize(Vektor2D v1) {
+    public static Vektor2D normalize(final Vektor2D v1) {
         if (v1.isNullVector()) {
             Random rdm= new Random();
             v1.x = rdm.nextDouble() * 2 -1;         // random Werte zwischen [-1, 1]
@@ -85,7 +95,7 @@ public class LineareAlgebra {
         }
     }
 
-    public static Vektor3D normalize(Vektor3D v1) {
+    public static Vektor3D normalize(final Vektor3D v1) {
         if (v1.isNullVector()) {
             Random rdm= new Random();
             v1.x = rdm.nextDouble() * 2 -1;         // random Werte zwischen [-1, 1]
@@ -99,100 +109,101 @@ public class LineareAlgebra {
         }
     }
 
-    public static double euklDistance(Vektor2D v1, Vektor2D v2) {
+    public static double euklDistance(final Vektor2D v1, final Vektor2D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
     }
 
-    public static double euklDistance(Vektor3D v1, Vektor3D v2) {
+    public static double euklDistance(final Vektor3D v1, final Vektor3D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y),2 )+pow((v1.z - v2.z), 2));
     }
-    public static double manhattanDistance(Vektor2D v1, Vektor2D v2) {
+    public static double manhattanDistance(final Vektor2D v1, final Vektor2D v2) {
         return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
     }
 
-    public static double manhattanDistance(Vektor3D v1, Vektor3D v2) {
+    public static double manhattanDistance(final Vektor3D v1, final Vektor3D v2) {
         return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y)+ Math.abs(v1.z - v2.z);
     }
 
-    public static Vektor3D crossProduct(Vektor3D v1, Vektor3D v2) {  
+    public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
     	Vektor3D erg= new Vektor3D(0,0,0);
-        erg.x= v1.z*v2.y - v1.y*v2.z;
-        erg.y= v1.x*v2.z - v1.z*v2.x;
-        erg.z= v1.y*v2.x - v1.x*v2.y;
+        erg.x = v1.z*v2.y - v1.y*v2.z;
+        erg.y = v1.x*v2.z - v1.z*v2.x;
+        erg.z = v1.y*v2.x - v1.x*v2.y;
         return erg;
     }
     
-    public static double dotProduct(Vektor2D v1, Vektor2D v2) { //Skalarprodukt
+    public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
         return v1.x*v2.x+v1.y*v2.y;
     }
 
-    public static double dotProduct(Vektor3D v1, Vektor3D v2) { //Skalarprodukt
+    public static double dotProduct(final Vektor3D v1, final Vektor3D v2) { //Skalarprodukt
         return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z;
     }
 
-    public static double cosEquation(Vektor2D v1, Vektor2D v2) {
+    public static double cosEquation(final Vektor2D v1, final Vektor2D v2) {
        return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
 
-    public static double cosEquation(Vektor3D v1, Vektor3D v2) {
+    public static double cosEquation(final Vektor3D v1, final Vektor3D v2) {
         return (dotProduct(v1,v2) /(length(v1)*length(v2)));
     }
 
-    public static double sinEquation(Vektor2D v1, Vektor2D v2) {  
+    public static double sinEquation(final Vektor2D v1, final Vektor2D v2) {  
             return (determinante(v1,v2)/(length(v1)*length(v2)));
     } 
     
-    public static double angleRad(Vektor2D v1, Vektor2D v2) {
+    public static double angleRad(final Vektor2D v1, final Vektor2D v2) {
         return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
-    public static double angleRad(Vektor3D v1, Vektor3D v2) {
+    public static double angleRad(final Vektor3D v1, final Vektor3D v2) {
         return degreeToRad(acos(cosEquation(v1,v2)));
     }
 
-    public static double angleDegree(Vektor2D v1, Vektor2D v2) {
+    public static double angleDegree(final Vektor2D v1, final Vektor2D v2) {
         return acos(cosEquation(v1,v2));
     }
 
-    public static double angleDegree(Vektor3D v1, Vektor3D v2) {
+    public static double angleDegree(final Vektor3D v1, final Vektor3D v2) {
         return acos(cosEquation(v1,v2));
     }
 
-    public static double radToDegree(double rad) { //Bogenmaß in Winkelgrad
+    public static double radToDegree(double rad) { //Bogenmass in Winkelgrad
         return  ((360)/(2*Math.PI)*rad);
     }
 
-    public static double degreeToRad(double deg) { // Winkelgrad in Bogenmaß
-        if (deg % 360 == 0)
-            return  ((2*Math.PI));
+    public static double degreeToRad(double deg) { // Winkelgrad in Bogenmass
+        if (deg % 360 == 0) { 
+        	return  ((2*Math.PI)); 
+        }
         return  ((2*Math.PI)/360*(deg%360));
     }
 
-    public static double determinante(Vektor2D v1, Vektor2D v2) {   
+    public static double determinante(final Vektor2D v1, final Vektor2D v2) {   
     	return (v1.x*v2.y-v2.x*v1.y);
     }
 
-    public static double determinante(Vektor3D v1, Vektor3D v2, Vektor3D v3) {   //ist wohl eigentlich unnötig
+    public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃ¶tig
         return (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
     }
 
-    public static double abs(Vektor2D v1) {
+    public static double abs(final Vektor2D v1) {
     	return length(v1);
     }
 
-    public static double abs(Vektor3D v1) {
+    public static double abs(final Vektor3D v1) {
         return length(v1);
     }
 
-    public static void show(Vektor2D v1) {
+    public static void show(final Vektor2D v1) {
        	System.out.println("[" + v1.x + "]");
        	System.out.println("[" + v1.y + "]");
     }
 
-    public static void show(Vektor3D v1) {
+    public static void show(final Vektor3D v1) {
         System.out.println("[" + v1.x + "]");
         System.out.println("[" + v1.y + "]");
         System.out.println("[" + v1.z + "]");
@@ -204,8 +215,9 @@ public class LineareAlgebra {
         Vektor3D v0= new Vektor3D(-1,2,3);
         Vektor3D v1= new Vektor3D(0,0,0);
         Vektor3D v2= new Vektor3D(7,8,9);
-        Vektor2D v3= new Vektor2D(5,2);
+        Vektor2D v3= new Vektor2D(Double.MAX_VALUE,Double.MAX_VALUE);
         Vektor2D v4= new Vektor2D(2,3);
+        double s = -0.5;
         show(a);
         System.out.println(radToDegree(4.1));
       /* System.out.println(angleDegree(vek,vek2));
@@ -218,11 +230,11 @@ public class LineareAlgebra {
         System.out.println(length(v3));
         System.out.println(length(v4));
         System.out.println(sinEquation(v3,v4));
-        System.out.println("hasüas");
+        System.out.println("hasas");
         System.out.println(degreeToRad(720));
-
-        normalize(v1);
-        show(v1);
-        
+        v3.mult(s);
+        show(v3);
+        System.out.println(Double.MAX_VALUE);
+       
     }
 }
