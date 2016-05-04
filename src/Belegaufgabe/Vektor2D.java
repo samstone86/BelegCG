@@ -7,15 +7,32 @@ import static java.lang.Math.*;
 public class Vektor2D {
 
     public double x, y;
+    private double sx, sy;
 
     public Vektor2D(double x, double y) {
         this.x=x;
         this.y=y;
     }
+    
+    public void saveState() {
+        sx = this.x;
+        sy = this.y;
+    }
+
+    public void restoreState(String err) {
+        this.x = sx;
+        this.y = sy;
+        System.err.println(err);
+    }
 
     public void add(Vektor2D v) {
-        this.x += v.x;
-        this.y += v.y;
+    	saveState();
+    	if(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE || v.x == Double.MAX_VALUE || v.y == Double.MAX_VALUE) {
+    		restoreState("ERROR: Double.MAX_VALUE !");
+    	} else {
+    		this.x += v.x;
+        	this.y += v.y;
+    	}
     }
 
     public void sub(Vektor2D v) {
@@ -24,18 +41,22 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-    	this.x *= s;
-        this.y *= s;
+    	saveState();
+    	if ((s < 1 || s > -1) && !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
+    		this.x *= s;
+    		this.y *= s;
+    	} else {
+            restoreState("Speicherüberlauf Double.MAX_VALUE");
+        }
     }
 
     public void div(double s) {
-    	//Experiment
-    	try{
-    	this.x /= s;
-    	this.y /= s;
-    	} catch(ArithmeticException e){
-    	      System.out.print("error " + "Divided by 0");
-    	      e.printStackTrace();
+        saveState();
+        if (s != 0 || !(this.x == Double.MAX_VALUE || this.y == Double.MAX_VALUE)) {
+            this.x /= s;
+            this.y /= s;
+        } else {
+            restoreState("Division duch 0 !!!");
         }
     }
 
