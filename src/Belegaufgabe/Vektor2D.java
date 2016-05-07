@@ -38,9 +38,9 @@ public class Vektor2D {
     }
 
     public void sub(Vektor2D v) {
-        if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
+        if (this.x > 0 ? v.x < Double.MIN_VALUE + this.x : v.x > Double.MAX_VALUE + this.x) {
             onErrorSetZero();
-        } else if (v.y > 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
+        } else if (this.y > 0 ? v.y < Double.MIN_VALUE + this.y : v.y > Double.MAX_VALUE + this.y) {
             onErrorSetZero();
         } else {
             this.x -= v.x;
