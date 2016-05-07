@@ -16,14 +16,12 @@ public class Vektor2D {
     public void add(Vektor2D v) {
         if (v.x > 0 ? this.x > Double.MAX_VALUE - v.x : this.x < Double.MIN_VALUE - v.x) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else if (v.y > 0 ? this.y > Double.MAX_VALUE - v.y : this.y < Double.MIN_VALUE - v.y) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
-        } else if (((Double)(this.x += v.x)).isInfinite() ||
-                   ((Double)(this.y += v.x)).isInfinite()) {
+            this.x = 0.0; this.y = 0.0;
+        } else if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
+                   ((Double)(this.y += v.x)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE)) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0;
         } else {
@@ -35,12 +33,10 @@ public class Vektor2D {
     public void sub(Vektor2D v) {
         if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else if (v.y > 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else {
             this.x -= v.x;
             this.y -= v.y;
@@ -51,15 +47,13 @@ public class Vektor2D {
         if (s > 0 ? this.x > Double.MAX_VALUE/s || this.x < Double.MIN_VALUE/s : (s < -1 ? this.x > Double.MIN_VALUE/s
                 || this.x < Double.MAX_VALUE/s : s == -1 && this.x == Double.MIN_VALUE)) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else if (s > 0 ? this.y > Double.MAX_VALUE/s || this.y < Double.MIN_VALUE/s : (s < -1 ? this.y > Double.MIN_VALUE/s
                 || this.y < Double.MAX_VALUE/s : s == -1 && this.y == Double.MIN_VALUE)) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
-        } else if (((Double)(this.x *= s)).isInfinite() ||
-                   ((Double)(this.y *= s)).isInfinite()) {
+            this.x = 0.0; this.y = 0.0;
+        } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
+                   ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE)) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0;
         } else {
@@ -71,12 +65,10 @@ public class Vektor2D {
     public void div(double s) {
         if ((this.x == Double.MIN_VALUE) && (s == -1)) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else if ((this.y == Double.MIN_VALUE) && (s == -1)) {
             System.err.println("Integer overflow");
-            this.x = 0.0;
-            this.y = 0.0;
+            this.x = 0.0; this.y = 0.0;
         } else if (((Double)(this.x /= s)).isInfinite() ||
                    ((Double)(this.y /= s)).isInfinite()) {
             System.err.println("Integer overflow");

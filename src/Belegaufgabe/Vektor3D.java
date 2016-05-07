@@ -24,9 +24,9 @@ public class Vektor3D {
         } else if (v.z > 0 ? this.z > Double.MAX_VALUE - v.z : this.z < Double.MIN_VALUE - v.z) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0; this.z = 0.0;
-        } else if (((Double)(this.x += v.x)).isInfinite() ||
-                   ((Double)(this.y += v.y)).isInfinite() ||
-                   ((Double)(this.z += v.z)).isInfinite()) {
+        } else if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
+                   ((Double)(this.y += v.y)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE) ||
+                   ((Double)(this.z += v.z)).isInfinite() || ((this.z += v.z) == Double.MAX_VALUE)) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0; this.z = 0.0;
         } else {
@@ -67,9 +67,9 @@ public class Vektor3D {
                 || this.z < Double.MAX_VALUE/s : s == -1 && this.z == Double.MIN_VALUE)) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0; this.z = 0.0;
-        } else if (((Double)(this.x *= s)).isInfinite() ||
-                   ((Double)(this.y *= s)).isInfinite() ||
-                   ((Double)(this.z *= s)).isInfinite()) {
+        } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
+                   ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE) ||
+                   ((Double)(this.z *= s)).isInfinite() || ((this.z *= s) == Double.MAX_VALUE)) {
             System.err.println("Integer overflow");
             this.x = 0.0; this.y = 0.0; this.z = 0.0;
         } else {
@@ -93,7 +93,7 @@ public class Vektor3D {
                    ((Double)(this.y /= s)).isInfinite() ||
                    ((Double)(this.z /= s)).isInfinite()) {
             System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0;
+            this.x = 0.0; this.y = 0.0; this.z = 0.0;
         } else {
             this.x /= s;
             this.y /= s;

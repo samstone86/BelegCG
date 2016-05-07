@@ -214,16 +214,19 @@ public class LineareAlgebra {
         Vektor3D v0= new Vektor3D(-1,2,3);
         Vektor3D v1= new Vektor3D(0,0,0);
         Vektor3D v2= new Vektor3D(7,8,9);
-        Vektor2D v3= new Vektor2D(Double.MIN_VALUE, Double.MAX_VALUE);
-        Vektor2D v4= new Vektor2D(3,3);
+        Vektor2D v3= new Vektor2D(Double.MAX_VALUE, Double.MAX_VALUE);
+        Vektor2D v4= new Vektor2D(1000,1000);
 /*
         v3.mult(Double.MAX_VALUE);
         show(v3);
         v4.mult(10);
 
         show(v4);*/
-        v3.div(0);
+        v3.mult(1);
         show(v3);
-        System.out.println(Double.NEGATIVE_INFINITY);
+       /* System.out.println(Double.MAX_VALUE);
+        Vektor2D t = add(v3,v4);
+        System.out.println(v3.x +" "+ v3.y +" ");
+        System.out.println(t.x  +" "+ t.y +" "); */
     }
 }
