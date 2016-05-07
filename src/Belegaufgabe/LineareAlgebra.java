@@ -210,12 +210,12 @@ public class LineareAlgebra {
 
     public static void main(String args[]){
       
-        Vektor2D a= new Vektor2D(2,3);
+       /* Vektor2D a= new Vektor2D(2,3);
         Vektor3D v0= new Vektor3D(-1,2,3);
         Vektor3D v1= new Vektor3D(0,0,0);
         Vektor3D v2= new Vektor3D(7,8,9);
         Vektor2D v3= new Vektor2D(Double.MAX_VALUE, Double.MAX_VALUE);
-        Vektor2D v4= new Vektor2D(1000,1000);
+        Vektor2D v4= new Vektor2D(1000,1000); */
 /*
         v3.mult(Double.MAX_VALUE);
         show(v3);
@@ -223,10 +223,34 @@ public class LineareAlgebra {
 
         show(v4);
         v3.div(-5);
-        show(v3);*/
+        show(v3);
         System.out.println(Double.MAX_VALUE);
         Vektor2D t = add(v4,v3);
         System.out.println(v4.x +" "+ v4.y +" ");
         System.out.println(t.x  +" "+ t.y +" ");
+        */
+
+        Vektor2D v1= new Vektor2D(Double.MAX_VALUE,3);
+        Vektor2D v2= new Vektor2D(-1,2);
+        Vektor3D v3= new Vektor3D(Double.MAX_VALUE,0,0);
+        Vektor3D v4= new Vektor3D(-7,8,9);
+
+
+        show(v1);
+        show(v2);
+        show(add(v1,v2));
+    System.out.print("\n");
+        show(v3);
+        show(v4);
+        show(sub(v3,v4));
+
+
+
+
+        //v4.add(v3);
+        //show(v4);
+
+
+
     }
 }
