@@ -8,6 +8,11 @@ public class Vektor2D {
 
     public double x, y;
 
+    public Vektor2D() {
+        this.x=0.0;
+        this.y=0.0;
+    }
+
     public Vektor2D(double x, double y) {
         this.x=x;
         this.y=y;
@@ -98,8 +103,8 @@ public class Vektor2D {
     }
 
     public void setPosition(double new_x, double new_y) {
-            this.x = new_x;
-            this.y = new_y;
+        this.x = new_x;
+        this.y = new_y;
     }
 
     public boolean isNullVector() {
