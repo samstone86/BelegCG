@@ -127,7 +127,7 @@ public class LineareAlgebra {
     }
 
     public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
-    	Vektor3D erg= new Vektor3D(0,0,0);
+    	Vektor3D erg = new Vektor3D(0,0,0);
     	erg.x = v1.y*v2.z - v1.z*v2.y; 
     	erg.y = v1.z*v2.x - v1.x*v2.z; 
     	erg.z = v1.x*v2.y - v1.y*v2.x;
@@ -151,7 +151,7 @@ public class LineareAlgebra {
     }
 
     public static double sinEquation(final Vektor2D v1, final Vektor2D v2) {  
-            return (determinante(v1, v2)/(length(v1)*length(v2)));
+        return (determinante(v1, v2)/(length(v1)*length(v2)));
     } 
     
     public static double angleRad(final Vektor2D v1, final Vektor2D v2) {
