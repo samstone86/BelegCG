@@ -15,7 +15,7 @@ public class Vektor3D {
     }
 
     private void onErrorSetZero() {
-        System.err.println("Integer overflow");
+        System.err.println("Double overflow");
         this.x = 0.0;
         this.y = 0.0;
         this.z = 0.0;

@@ -221,12 +221,12 @@ public class LineareAlgebra {
         show(v3);
         v4.mult(10);
 
-        show(v4);*/
-        v3.mult(1);
-        show(v3);
-       /* System.out.println(Double.MAX_VALUE);
-        Vektor2D t = add(v3,v4);
-        System.out.println(v3.x +" "+ v3.y +" ");
-        System.out.println(t.x  +" "+ t.y +" "); */
+        show(v4);
+        v3.div(-5);
+        show(v3);*/
+        System.out.println(Double.MAX_VALUE);
+        Vektor2D t = add(v4,v3);
+        System.out.println(v4.x +" "+ v4.y +" ");
+        System.out.println(t.x  +" "+ t.y +" ");
     }
 }
