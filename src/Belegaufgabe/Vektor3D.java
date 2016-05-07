@@ -14,21 +14,24 @@ public class Vektor3D {
         this.z=z;
     }
 
+    private void onErrorSetZero() {
+        System.err.println("Integer overflow");
+        this.x = 0.0;
+        this.y = 0.0;
+        this.z = 0.0;
+    }
+
     public void add(Vektor3D v) {
         if (v.x > 0 ? this.x > Double.MAX_VALUE - v.x : this.x < Double.MIN_VALUE - v.x) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (v.y > 0 ? this.y > Double.MAX_VALUE - v.y : this.y < Double.MIN_VALUE - v.y) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (v.z > 0 ? this.z > Double.MAX_VALUE - v.z : this.z < Double.MIN_VALUE - v.z) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
                    ((Double)(this.y += v.y)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE) ||
                    ((Double)(this.z += v.z)).isInfinite() || ((this.z += v.z) == Double.MAX_VALUE)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else {
             this.x += v.x;
             this.y += v.y;
@@ -39,14 +42,11 @@ public class Vektor3D {
 
     public void sub(Vektor3D v) {
         if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (v.y > 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (v.z > 0 ? this.z < Double.MIN_VALUE + v.z : this.z > Double.MAX_VALUE + v.z) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else {
             this.x -= v.x;
             this.y -= v.y;
@@ -57,21 +57,17 @@ public class Vektor3D {
     public void mult(double s) {
         if (s > 0 ? this.x > Double.MAX_VALUE/s || this.x < Double.MIN_VALUE/s : (s < -1 ? this.x > Double.MIN_VALUE/s
                 || this.x < Double.MAX_VALUE/s : s == -1 && this.x == Double.MIN_VALUE)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (s > 0 ? this.y > Double.MAX_VALUE/s || this.y < Double.MIN_VALUE/s : (s < -1 ? this.y > Double.MIN_VALUE/s
                 || this.y < Double.MAX_VALUE/s : s == -1 && this.y == Double.MIN_VALUE)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (s > 0 ? this.z > Double.MAX_VALUE/s || this.z < Double.MIN_VALUE/s : (s < -1 ? this.z > Double.MIN_VALUE/s
                 || this.z < Double.MAX_VALUE/s : s == -1 && this.z == Double.MIN_VALUE)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.z *= s)).isInfinite() || ((this.z *= s) == Double.MAX_VALUE)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else {
             this.x *= s;
             this.y *= s;
@@ -81,19 +77,15 @@ public class Vektor3D {
 
     public void div(double s) {
         if ((this.x == Double.MIN_VALUE) && (s == -1)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if ((this.y == Double.MIN_VALUE) && (s == -1)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if ((this.z == Double.MIN_VALUE) && (s == -1)) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else if (((Double)(this.x /= s)).isInfinite() ||
                    ((Double)(this.y /= s)).isInfinite() ||
                    ((Double)(this.z /= s)).isInfinite()) {
-            System.err.println("Integer overflow");
-            this.x = 0.0; this.y = 0.0; this.z = 0.0;
+            onErrorSetZero();
         } else {
             this.x /= s;
             this.y /= s;
