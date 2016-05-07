@@ -214,22 +214,13 @@ public class LineareAlgebra {
         Vektor3D v0= new Vektor3D(-1,2,3);
         Vektor3D v1= new Vektor3D(0,0,0);
         Vektor3D v2= new Vektor3D(7,8,9);
-        Vektor2D v3= new Vektor2D(Double.MAX_VALUE,Double.MAX_VALUE);
-        Vektor2D v4= new Vektor2D(2,3);
-        show(a);
-        System.out.println(radToDegree(4.1));
-      /*System.out.println(radToDegree(0.6));
-        System.out.println(degreeToRad(23));*/
-        show(crossProduct(v1,v2));
-        System.out.println(determinante(v3,v4));
-        System.out.println(determinante(v0,v1,v2));
-        System.out.println(length(v3));
-        System.out.println(length(v4));
-        System.out.println(sinEquation(v3,v4));
-        System.out.println("hasas");
-        System.out.println(degreeToRad(720));
-        System.out.println(Double.MIN_VALUE);
+        Vektor2D v3= new Vektor2D(Double.MAX_VALUE, Double.MAX_VALUE);
+        Vektor2D v4= new Vektor2D(3,3);
 
-       
+        v3.mult(Double.MAX_VALUE);
+        show(v3);
+        v4.mult(10);
+
+        show(v4);
     }
 }
