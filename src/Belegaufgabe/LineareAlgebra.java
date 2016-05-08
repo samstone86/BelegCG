@@ -144,8 +144,7 @@ public class LineareAlgebra {
         double dotP = v1.x*v2.x + v1.y*v2.y;
         if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
             System.err.println("Double overflow");
-            dotP = Double.parseDouble(null);
-            return dotP;
+            return Double.parseDouble(null);
         }
         return dotP;
     }
@@ -154,8 +153,7 @@ public class LineareAlgebra {
         double dotP = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
         if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
             System.err.println("Double overflow");
-            dotP = Double.parseDouble(null);
-            return dotP;
+            return Double.parseDouble(null);
         }
         return dotP;
     }
