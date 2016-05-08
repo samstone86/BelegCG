@@ -134,8 +134,7 @@ public class LineareAlgebra {
         if ((erg.x == Double.MAX_VALUE) || (erg.x == Double.NEGATIVE_INFINITY) || (erg.x == Double.POSITIVE_INFINITY) ||
             (erg.y == Double.MAX_VALUE) || (erg.y == Double.NEGATIVE_INFINITY) || (erg.y == Double.POSITIVE_INFINITY) ||
             (erg.z == Double.MAX_VALUE) || (erg.z == Double.NEGATIVE_INFINITY) || (erg.z == Double.POSITIVE_INFINITY)) {
-            System.err.println("Double overflow");
-            return null;
+            throw new ArithmeticException("Double overflow");
         }
         return erg;
     }
