@@ -81,6 +81,10 @@ public class Vektor2D {
             onErrorSetZero();
         } else if (s == 0) {
             onErrorSetZero();
+        } else if ((s >= -0.1 || s <= 0.1) && (((this.x /= s) == Double.MIN_VALUE) || ((this.y /= s) == Double.MIN_VALUE))) {
+            onErrorSetZero();
+        } else if (s == Double.MIN_VALUE && ((this.x >= -0.1 || this.x <= 0.1) || (this.y >= -0.1 || this.y <= 0.1))) {
+            onErrorSetZero();
         } else {
             this.x /= s;
             this.y /= s;

@@ -47,10 +47,8 @@ public class Vektor3D {
     }
 
     public void sub(Vektor3D v) {
-
 //      if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x)
-
-     if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
+        if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
             onErrorSetZero();
         } else if (v.y > 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
             onErrorSetZero();
@@ -107,11 +105,6 @@ public class Vektor3D {
             this.y *= s;
             this.z *= s;
         }
-
-
-
-
-
     }
 
     public void div(double s) {
@@ -126,6 +119,10 @@ public class Vektor3D {
                    ((Double)(this.z /= s)).isInfinite()) {
             onErrorSetZero();
         } else if (s == 0) {
+            onErrorSetZero();
+        } else if ((s >= -0.1 || s <= 0.1) && (((this.x /= s) == Double.MIN_VALUE) || ((this.y /= s) == Double.MIN_VALUE) || ((this.z /= s) == Double.MIN_VALUE))) {
+            onErrorSetZero();
+        } else if (s == Double.MIN_VALUE && ((this.x >= -0.1 || this.x <= 0.1) || (this.y >= -0.1 || this.y <= 0.1) || (this.z >= -0.1 || this.z <= 0.1))) {
             onErrorSetZero();
         } else {
             this.x /= s;
