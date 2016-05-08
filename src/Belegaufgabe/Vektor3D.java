@@ -113,7 +113,7 @@ public class Vektor3D {
 
     public double length() {
         double l = (sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2)));
-        if ((l == Double.MAX_VALUE) || (l == Double.NEGATIVE_INFINITY) || (l == Double.POSITIVE_INFINITY)) {
+        if ((l == Double.MAX_VALUE) || (l == Double.NEGATIVE_INFINITY) || (l == Double.POSITIVE_INFINITY) || ((Double)l).isNaN()) {
             throw new ArithmeticException("Double overflow" + l);
         }
         return l;
