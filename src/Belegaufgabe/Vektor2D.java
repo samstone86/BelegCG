@@ -61,6 +61,10 @@ public class Vektor2D {
         } else if (((this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE) && s > 1) ||
                 ((this.x > 1 || this.y > 1) && s == Double.MIN_VALUE )){
             onErrorSetZero();
+        } else if (s > 1 && (((this.x *= s) == Double.MIN_VALUE) || ((this.y *= s) == Double.MIN_VALUE))) {
+            onErrorSetZero();
+        } else if (s == Double.MIN_VALUE && (this.x > 1 || this.y > 1)) {
+            onErrorSetZero();
         } else {
             this.x *= s;
             this.y *= s;

@@ -98,14 +98,20 @@ public class Vektor3D {
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.z *= s)).isInfinite() || ((this.z *= s) == Double.MAX_VALUE)) {
             onErrorSetZero();
-        } else if (((this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE || this.z == Double.MIN_VALUE) && s > 1) ||
-                   ((this.x > 1 || this.y > 1 || this.z > 1) && s == Double.MIN_VALUE )){
+        } else if (s > 1 && (((this.x *= s) == Double.MIN_VALUE) || ((this.y *= s) == Double.MIN_VALUE) || ((this.z *= s) == Double.MIN_VALUE))) {
+            onErrorSetZero();
+        } else if (s == Double.MIN_VALUE && (this.x > 1 || this.y > 1 || this.z > 1)) {
             onErrorSetZero();
         } else {
             this.x *= s;
             this.y *= s;
             this.z *= s;
         }
+
+
+
+
+
     }
 
     public void div(double s) {
