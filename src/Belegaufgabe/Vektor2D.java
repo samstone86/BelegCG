@@ -38,26 +38,14 @@ public class Vektor2D {
     }
 
     public void sub(Vektor2D v) {
-        if ((this.x > 0) && ((v.x * -1) > (Double.MAX_VALUE - this.x))) {
-            onErrorSetZero();
-        } else if ((this.x < 0) && (v.x > Double.MAX_VALUE + this.x)) {
-            onErrorSetZero();
-        } else if ((this.y > 0) && ((v.y * -1) > (Double.MAX_VALUE - this.y))) {
-            onErrorSetZero();
-        } else if ((this.y < 0) && (v.y > Double.MAX_VALUE + this.y)) {
-            onErrorSetZero();
-        } else {
-            this.x -= v.x;
-            this.y -= v.y;
-        }
-/*        if (this.x > 0 ? v.x < Double.MIN_VALUE + this.x : v.x > Double.MAX_VALUE + this.x) {
+      if (this.x > 0 ? v.x < Double.MIN_VALUE + this.x : v.x > Double.MAX_VALUE + this.x) {
             onErrorSetZero();
         } else if (this.y > 0 ? v.y < Double.MIN_VALUE + this.y : v.y > Double.MAX_VALUE + this.y) {
             onErrorSetZero();
         } else {
             this.x -= v.x;
             this.y -= v.y;
-        }*/
+        }
     }
 
     public void mult(double s) {
@@ -76,6 +64,10 @@ public class Vektor2D {
         } else if (s > 1 && (((this.x *= s) == Double.MIN_VALUE) || ((this.y *= s) == Double.MIN_VALUE))) {
             onErrorSetZero();
         } else if (s == Double.MIN_VALUE && (this.x > 1 || this.y > 1)) {
+            onErrorSetZero();
+        } else if (s > 1 && (((this.x *= s) == Double.MAX_VALUE) || ((this.y *= s) == Double.MAX_VALUE))) {
+            onErrorSetZero();
+        } else if (s == Double.MAX_VALUE && (this.x > 1 || this.y > 1)) {
             onErrorSetZero();
         } else {
             this.x *= s;
