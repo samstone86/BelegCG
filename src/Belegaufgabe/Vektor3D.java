@@ -112,7 +112,11 @@ public class Vektor3D {
     }
 
     public double length() {
-        return (sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2)));
+        double l = (sqrt(pow(this.x, 2) + pow(this.y, 2) + pow(this.z, 2)));
+        if ((l == Double.MAX_VALUE) || (l == Double.NEGATIVE_INFINITY) || (l == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + l);
+        }
+        return l;
     }
 
     public void normalize() {
