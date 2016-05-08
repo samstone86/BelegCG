@@ -184,6 +184,8 @@ public class LineareAlgebra {
     }
 
     public static double radToDegree(double rad) { //Bogenmass in Winkelgrad
+        if (rad == Double.MAX_VALUE)
+            throw new ArithmeticException("Double overflow" + rad);
         return  ((360) / (2 * Math.PI) * rad);
     }
 
