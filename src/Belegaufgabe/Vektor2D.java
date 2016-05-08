@@ -72,6 +72,8 @@ public class Vektor2D {
         } else if (((Double)(this.x /= s)).isInfinite() ||
                    ((Double)(this.y /= s)).isInfinite()) {
             onErrorSetZero();
+        } else if (s == 0) {
+            onErrorSetZero();
         } else {
             this.x /= s;
             this.y /= s;

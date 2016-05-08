@@ -128,7 +128,7 @@ public class LineareAlgebra {
 
     public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
     	Vektor3D erg = new Vektor3D(0,0,0);
-    	erg.x = v1.y*v2.z - v1.z*v2.y; 
+    	erg.x = v1.y*v2.z - v1.z*v2.y;
     	erg.y = v1.z*v2.x - v1.x*v2.z; 
     	erg.z = v1.x*v2.y - v1.y*v2.x;
         return erg;
@@ -231,18 +231,15 @@ public class LineareAlgebra {
 
         Vektor2D v1= new Vektor2D(Double.MAX_VALUE,3);
         Vektor2D v2= new Vektor2D(-1,2);
-        Vektor3D v3= new Vektor3D(Double.MIN_VALUE,0,0);
-        Vektor3D v4= new Vektor3D(Double.MIN_VALUE,8,9);
+        Vektor3D v3= new Vektor3D(Double.MAX_VALUE,1.0,1.0);
+        Vektor3D v4= new Vektor3D(-1.0,8.0,9.0);
     /*    show(v1);
         System.out.print("\n\n");
         show(v2);
         System.out.print("\n\n");
         show(add(v1,v2));
-        System.out.print("\n\n");;*/
-        show(v3);
-        System.out.print("\n\n");
-        show(v4);
-        System.out.print("\n\n");
-        show(sub(v3,v4));
+        System.out.print("\n\n");*/
+        System.out.print(Double.MIN_VALUE / 0.1);
+        //show(sub(v3,v4));
     }
 }
