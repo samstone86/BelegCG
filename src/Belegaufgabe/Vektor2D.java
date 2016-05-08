@@ -58,7 +58,8 @@ public class Vektor2D {
         } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE)) {
             onErrorSetZero();
-        } else if ((this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE) && s > 1 ) {
+        } else if (((this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE) && s > 1) ||
+                ((this.x > 1 || this.y > 1) && s == Double.MIN_VALUE )){
             onErrorSetZero();
         } else {
             this.x *= s;
