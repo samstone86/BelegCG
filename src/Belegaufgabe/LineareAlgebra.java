@@ -239,7 +239,6 @@ public class LineareAlgebra {
         show(v2);
         System.out.print("\n\n");
         show(add(v1,v2));*/
-        System.out.print(Double.MIN_VALUE / -1);
-        show(sub(v4,v5));
+        show(mult(v4,0.1));
     }
 }
