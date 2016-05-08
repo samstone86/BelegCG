@@ -196,7 +196,7 @@ public class LineareAlgebra {
 
     public static double determinante(final Vektor2D v1, final Vektor2D v2) {
         double det = (v1.x*v2.y - v2.x*v1.y);
-        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY)) {
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN()) {
             throw new ArithmeticException("Double overflow" + det);
         }
     	return det;
@@ -205,7 +205,7 @@ public class LineareAlgebra {
     public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÆ’Ã‚Â¶tig
         double det = (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		      v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
-        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY)) {
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN()) {
             throw new ArithmeticException("Double overflow" + det);
         }
         return det;
