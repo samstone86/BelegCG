@@ -47,23 +47,35 @@ public class Vektor3D {
     }
 
     public void sub(Vektor3D v) {
-/*        if (this.x > 0 ? v.x < Double.MIN_VALUE + this.x : v.x > Double.MAX_VALUE + this.x) {
+
+//      if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x)
+
+     if (v.x > 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
             onErrorSetZero();
-        } else if (this.y > 0 ? v.y < Double.MIN_VALUE + this.y : v.y > Double.MAX_VALUE + this.y) {
+        } else if (v.y > 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
             onErrorSetZero();
-        } else if (this.z > 0 ? v.z < Double.MIN_VALUE + this.z : v.z > Double.MAX_VALUE + this.z) {
+        } else if (v.z > 0 ? this.z < Double.MIN_VALUE + v.z : this.z > Double.MAX_VALUE + v.z) {
             onErrorSetZero();
         } else {
             this.x -= v.x;
             this.y -= v.y;
             this.z -= v.z;
-        }*/
+        }
+/*
+        if ((this.x != Double.MIN_VALUE) || (v.x != Double.MIN_VALUE) ||
+            (this.y != Double.MIN_VALUE) || (v.y != Double.MIN_VALUE) ||
+            (this.z != Double.MIN_VALUE) || (v.z != Double.MIN_VALUE))
 
-        if (v.x < 0 ? this.x < Double.MIN_VALUE + v.x : this.x > Double.MAX_VALUE + v.x) {
+        if (this.x == 0 ? v.x == Double.MIN_VALUE : v.x < Double.MIN_VALUE )
+
+        */
+
+
+        if (((this.x -= v.x) == Double.MIN_VALUE) || ((this.x -= v.x) == Double.NEGATIVE_INFINITY)) {
             onErrorSetZero();
-        } else if (v.y < 0 ? this.y < Double.MIN_VALUE + v.y : this.y > Double.MAX_VALUE + v.y) {
+        } else if (((this.y -= v.y) == Double.MIN_VALUE) || ((this.y -= v.y) == Double.NEGATIVE_INFINITY)) {
             onErrorSetZero();
-        } else if (v.z < 0 ? this.z < Double.MIN_VALUE + v.z : this.z > Double.MAX_VALUE + v.z) {
+        } else if (((this.z -= v.z) == Double.MIN_VALUE) || ((this.x -= v.z) == Double.NEGATIVE_INFINITY)) {
             onErrorSetZero();
         } else {
             this.x -= v.x;
@@ -85,6 +97,8 @@ public class Vektor3D {
         } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.z *= s)).isInfinite() || ((this.z *= s) == Double.MAX_VALUE)) {
+            onErrorSetZero();
+        } else if ((this.x == Double.MIN_VALUE || this.y == Double.MIN_VALUE || this.z == Double.MIN_VALUE) && s > 1 ){
             onErrorSetZero();
         } else {
             this.x *= s;
