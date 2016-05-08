@@ -72,14 +72,6 @@ public class Vektor3D {
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.z *= s)).isInfinite() || ((this.z *= s) == Double.MAX_VALUE)) {
             onErrorSetZero();
-        } else if (s > 1 && (((this.x *= s) == Double.MIN_VALUE) || ((this.y *= s) == Double.MIN_VALUE) || ((this.z *= s) == Double.MIN_VALUE))) {
-            onErrorSetZero();
-        } else if (s == Double.MIN_VALUE && (this.x > 1 || this.y > 1 || this.z > 1)) {
-            onErrorSetZero();
-        } else if (s > 1 && (((this.x *= s) == Double.MAX_VALUE) || ((this.y *= s) == Double.MAX_VALUE) || ((this.z *= s) == Double.MAX_VALUE))) {
-            onErrorSetZero();
-        } else if (s == Double.MAX_VALUE && (this.x > 1 || this.y > 1 || this.z > 1)) {
-            onErrorSetZero();
         } else {
             this.x *= s;
             this.y *= s;

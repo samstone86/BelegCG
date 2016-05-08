@@ -143,7 +143,9 @@ public class LineareAlgebra {
     }
     
     public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
-        return v1.x*v2.x + v1.y*v2.y;
+        double dotP = v1.x*v2.x + v1.y*v2.y;
+        
+        return dotP;
     }
 
     public static double dotProduct(final Vektor3D v1, final Vektor3D v2) { //Skalarprodukt
