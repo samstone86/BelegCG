@@ -207,38 +207,4 @@ public class LineareAlgebra {
         System.out.println("[" + v1.y + "]");
         System.out.println("[" + v1.z + "]");
     }
-
-    public static void main(String args[]){
-      
-/*        Vektor2D a= new Vektor2D(2,3);
-        Vektor3D v0= new Vektor3D(-1,2,3);
-        Vektor3D v1= new Vektor3D(0,0,0);
-        Vektor3D v2= new Vektor3D(7,8,9);
-        Vektor2D v3= new Vektor2D(Double.MAX_VALUE, Double.MAX_VALUE);
-        Vektor2D v4= new Vektor2D(1000,Double.MAX_VALUE);
-
-        v3.mult(Double.MAX_VALUE);
-        show(v3);
-        v4.mult(10);
-
-        show(v4);
-        v3.div(-5);
-        show(v3);
-        System.out.println(Double.MAX_VALUE);
-        Vektor2D t = add(v4,v3);
-        System.out.println(v4.x +" "+ v4.y +" ");
-        System.out.println(t.x  +" "+ t.y +" ");*/
-
-        Vektor2D v1= new Vektor2D(Double.MAX_VALUE,3);
-        Vektor2D v2= new Vektor2D(-1,2);
-        Vektor3D v3= new Vektor3D(2.0,1.0,1.0);
-        Vektor3D v4= new Vektor3D(-1.0,8.0,9.0);
-        Vektor3D v5= new Vektor3D(Double.MIN_VALUE,8.0,9.0);
-    /*    show(v1);
-        System.out.print("\n\n");
-        show(v2);
-        System.out.print("\n\n");
-        show(add(v1,v2));*/
-        show(mult(v4,0.1));
-    }
 }
