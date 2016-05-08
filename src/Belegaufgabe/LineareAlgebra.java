@@ -143,8 +143,7 @@ public class LineareAlgebra {
     public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
         double dotP = v1.x*v2.x + v1.y*v2.y;
         if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
-            System.err.println("Double overflow");
-            return Double.parseDouble(null);
+            throw new ArithmeticException("Double overflow" + dotP);
         }
         return dotP;
     }
@@ -152,8 +151,7 @@ public class LineareAlgebra {
     public static double dotProduct(final Vektor3D v1, final Vektor3D v2) { //Skalarprodukt
         double dotP = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
         if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
-            System.err.println("Double overflow");
-            return Double.parseDouble(null);
+            throw new ArithmeticException("Double overflow" + dotP);
         }
         return dotP;
     }
@@ -196,13 +194,21 @@ public class LineareAlgebra {
         return  ((2 * Math.PI) / 360 * deg);
     }
 
-    public static double determinante(final Vektor2D v1, final Vektor2D v2) {   
-    	return (v1.x*v2.y - v2.x*v1.y);
+    public static double determinante(final Vektor2D v1, final Vektor2D v2) {
+        double det = (v1.x*v2.y - v2.x*v1.y);
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + det);
+        }
+    	return det;
     }
 
     public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÆ’Ã‚Â¶tig
-        return (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
-        		v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
+        double det = (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
+        		      v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + det);
+        }
+        return det;
     }
 
     public static double abs(final Vektor2D v1) {
