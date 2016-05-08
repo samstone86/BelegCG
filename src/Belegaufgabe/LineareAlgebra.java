@@ -1,7 +1,6 @@
 package Belegaufgabe;
 
 import java.util.Random;
-
 import static java.lang.Math.*;
 
 public class LineareAlgebra {
@@ -88,8 +87,7 @@ public class LineareAlgebra {
             v1.x = rdm.nextDouble() * 2 -1;         // random Werte zwischen [-1, 1]
             v1.y = rdm.nextDouble() * 2 -1;
             return new Vektor2D(v1.x, v1.y);
-        }
-        else {
+        } else {
             double l = length(v1);
             return new Vektor2D(((1 / l) * v1.x), ((1 / l) * v1.y));
         }
@@ -102,43 +100,38 @@ public class LineareAlgebra {
             v1.y = rdm.nextDouble() * 2 -1;
             v1.z = rdm.nextDouble() * 2 -1;
             return new Vektor3D(v1.x, v1.y, v1.z);
-        }
-        else {
-        double l = length(v1);
-        return new Vektor3D(((1 / l)* v1.x), ((1 / l)* v1.y),((1 / l)* v1.z));
+        } else {
+            double l = length(v1);
+            return new Vektor3D(((1 / l)* v1.x), ((1 / l)* v1.y),((1 / l)* v1.z));
         }
     }
 
     public static double euklDistance(final Vektor2D v1, final Vektor2D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         double euklDist = sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
-        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY)) {
+        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + euklDist);
-        }
         return euklDist;
     }
 
     public static double euklDistance(final Vektor3D v1, final Vektor3D v2) {
         /* euklDistance 2D pow = Potenzieren*/
         double euklDist = sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2) + pow((v1.z - v2.z), 2));
-        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY)) {
+        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + euklDist);
-        }
         return euklDist;
     }
     public static double manhattanDistance(final Vektor2D v1, final Vektor2D v2) {
         double manhDist = Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
-        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY)) {
+        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + manhDist);
-        }
         return manhDist;
     }
 
     public static double manhattanDistance(final Vektor3D v1, final Vektor3D v2) {
         double manhDist = Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y) + Math.abs(v1.z - v2.z);
-        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY)) {
+        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + manhDist);
-        }
         return manhDist;
     }
 
@@ -157,22 +150,20 @@ public class LineareAlgebra {
     
     public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
         double dotP = v1.x*v2.x + v1.y*v2.y;
-        if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
+        if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + dotP);
-        }
         return dotP;
     }
 
     public static double dotProduct(final Vektor3D v1, final Vektor3D v2) { //Skalarprodukt
         double dotP = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
-        if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY)) {
+        if ((dotP == Double.MAX_VALUE) || (dotP == Double.NEGATIVE_INFINITY) || (dotP == Double.POSITIVE_INFINITY))
             throw new ArithmeticException("Double overflow" + dotP);
-        }
         return dotP;
     }
 
     public static double cosEquation(final Vektor2D v1, final Vektor2D v2) {
-       return (dotProduct(v1, v2) /(length(v1)*length(v2)));
+        return (dotProduct(v1, v2) /(length(v1)*length(v2)));
     }
 
     public static double cosEquation(final Vektor3D v1, final Vektor3D v2) {
@@ -213,18 +204,16 @@ public class LineareAlgebra {
 
     public static double determinante(final Vektor2D v1, final Vektor2D v2) {
         double det = (v1.x*v2.y - v2.x*v1.y);
-        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN()) {
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN())
             throw new ArithmeticException("Double overflow" + det);
-        }
     	return det;
     }
 
     public static double determinante(final Vektor3D v1, final Vektor3D v2, final Vektor3D v3) {   //ist wohl eigentlich unnÃƒÆ’Ã‚Â¶tig
         double det = (v1.x*v2.y*v3.z + v2.x*v3.y*v1.z + v3.x*v1.y*v2.z-
         		      v1.z*v2.y*v3.x - v2.z*v3.y*v1.x - v3.z*v1.y*v2.x);
-        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN()) {
+        if ((det == Double.MAX_VALUE) || (det == Double.NEGATIVE_INFINITY) || (det == Double.POSITIVE_INFINITY) || ((Double)det).isNaN())
             throw new ArithmeticException("Double overflow" + det);
-        }
         return det;
     }
 

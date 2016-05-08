@@ -1,7 +1,6 @@
 package Belegaufgabe;
 
 import java.util.Random;
-
 import static java.lang.Math.*;
 
 public class Vektor2D {

@@ -1,7 +1,6 @@
 package Belegaufgabe;
 
 import java.util.Random;
-
 import static java.lang.Math.*;
 
 public class Vektor3D {
@@ -41,7 +40,6 @@ public class Vektor3D {
             this.y += v.y;
             this.z += v.z;
         }
-
     }
 
     public void sub(Vektor3D v) {
