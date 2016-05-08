@@ -131,9 +131,9 @@ public class LineareAlgebra {
     	erg.x = v1.y*v2.z - v1.z*v2.y;
     	erg.y = v1.z*v2.x - v1.x*v2.z; 
     	erg.z = v1.x*v2.y - v1.y*v2.x;
-        if ((erg.x == Double.MAX_VALUE) || (erg.x == Double.MIN_VALUE) ||
-            (erg.y == Double.MAX_VALUE) || (erg.y == Double.MIN_VALUE) ||
-            (erg.z == Double.MAX_VALUE) || (erg.z == Double.MIN_VALUE)) {
+        if ((erg.x == Double.MAX_VALUE) || (erg.x == Double.NEGATIVE_INFINITY) || (erg.x == Double.POSITIVE_INFINITY) ||
+            (erg.y == Double.MAX_VALUE) || (erg.y == Double.NEGATIVE_INFINITY) || (erg.y == Double.POSITIVE_INFINITY) ||
+            (erg.z == Double.MAX_VALUE) || (erg.z == Double.NEGATIVE_INFINITY) || (erg.z == Double.POSITIVE_INFINITY)) {
             erg.x = 0.0;
             erg.y = 0.0;
             erg.z = 0.0;
@@ -144,7 +144,7 @@ public class LineareAlgebra {
     
     public static double dotProduct(final Vektor2D v1, final Vektor2D v2) { //Skalarprodukt
         double dotP = v1.x*v2.x + v1.y*v2.y;
-        
+
         return dotP;
     }
 
