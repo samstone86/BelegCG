@@ -111,19 +111,35 @@ public class LineareAlgebra {
 
     public static double euklDistance(final Vektor2D v1, final Vektor2D v2) {
         /* euklDistance 2D pow = Potenzieren*/
-        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
+        double euklDist = sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2));
+        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + euklDist);
+        }
+        return euklDist;
     }
 
     public static double euklDistance(final Vektor3D v1, final Vektor3D v2) {
         /* euklDistance 2D pow = Potenzieren*/
-        return sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2) + pow((v1.z - v2.z), 2));
+        double euklDist = sqrt(pow((v1.x - v2.x), 2) + pow((v1.y - v2.y), 2) + pow((v1.z - v2.z), 2));
+        if ((euklDist == Double.MAX_VALUE) || (euklDist == Double.NEGATIVE_INFINITY) || (euklDist == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + euklDist);
+        }
+        return euklDist;
     }
     public static double manhattanDistance(final Vektor2D v1, final Vektor2D v2) {
-        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
+        double manhDist = Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y);
+        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + manhDist);
+        }
+        return manhDist;
     }
 
     public static double manhattanDistance(final Vektor3D v1, final Vektor3D v2) {
-        return Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y) + Math.abs(v1.z - v2.z);
+        double manhDist = Math.abs(v1.x - v2.x) + Math.abs(v1.y - v2.y) + Math.abs(v1.z - v2.z);
+        if ((manhDist == Double.MAX_VALUE) || (manhDist == Double.NEGATIVE_INFINITY) || (manhDist == Double.POSITIVE_INFINITY)) {
+            throw new ArithmeticException("Double overflow" + manhDist);
+        }
+        return manhDist;
     }
 
     public static Vektor3D crossProduct(final Vektor3D v1, final Vektor3D v2) {  
