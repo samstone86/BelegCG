@@ -18,6 +18,12 @@ public class Vektor3D {
         this.y=y;
         this.z=z;
     }
+    
+    public Vektor3D(Vektor3D copy) {
+        this.x=copy.x;
+        this.y=copy.y;
+        this.z=copy.z;
+    }
 
     private void onErrorSetZero() {
         System.err.println("Double overflow");
