@@ -16,6 +16,12 @@ public class Vektor2D {
         this.x=x;
         this.y=y;
     }
+    
+    public Vektor2D(Vektor2D copy) {
+        this.x=copy.x;
+        this.y=copy.y;
+    }
+    
     private void onErrorSetZero() {
         System.err.println("Double overflow");
         setPosition(0.0, 0.0);
