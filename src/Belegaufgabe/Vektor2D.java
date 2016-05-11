@@ -109,6 +109,12 @@ public class Vektor2D {
             this.y = (1 / l) * this.y;
         }
     }
+    
+    public void truncate(double max) {
+    	this.normalize();
+    	this.x *= max;
+    	this.y *= max;
+    }
 
     public void setPosition(double new_x, double new_y) {
         this.x = new_x;
