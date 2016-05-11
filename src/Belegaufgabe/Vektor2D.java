@@ -28,14 +28,10 @@ public class Vektor2D {
     }
 
     public void add(Vektor2D v) {
-        if (v.x > 0 ? this.x > Double.MAX_VALUE - v.x : this.x < Double.MIN_VALUE - v.x) {
-            onErrorSetZero();
-        } else if (v.y > 0 ? this.y > Double.MAX_VALUE - v.y : this.y < Double.MIN_VALUE - v.y) {
-            onErrorSetZero();
-        } else if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
+        if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
                    ((Double)(this.y += v.x)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE)) {
-            onErrorSetZero();
-        } else {
+            onErrorSetZero(3);
+        } else  {
             this.x += v.x;
             this.y += v.y;
         }
