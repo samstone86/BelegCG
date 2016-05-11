@@ -130,6 +130,13 @@ public class Vektor3D {
             this.z = (1 / l) * this.z;
         }
     }
+    
+    public void truncate(double max) {
+    	this.normalize();
+    	this.x *= max;
+    	this.y *= max;
+    	this.z *= max;
+    }
 
     public void setPosition(double new_x, double new_y, double new_z) {
         this.x = new_x;
