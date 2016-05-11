@@ -31,13 +31,7 @@ public class Vektor3D {
     }
 
     public void add(Vektor3D v) {
-        if (v.x > 0 ? this.x > Double.MAX_VALUE - v.x : this.x < Double.MIN_VALUE - v.x) {
-            onErrorSetZero();
-        } else if (v.y > 0 ? this.y > Double.MAX_VALUE - v.y : this.y < Double.MIN_VALUE - v.y) {
-            onErrorSetZero();
-        } else if (v.z > 0 ? this.z > Double.MAX_VALUE - v.z : this.z < Double.MIN_VALUE - v.z) {
-            onErrorSetZero();
-        } else if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
+        if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
                    ((Double)(this.y += v.y)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE) ||
                    ((Double)(this.z += v.z)).isInfinite() || ((this.z += v.z) == Double.MAX_VALUE)) {
             onErrorSetZero();
