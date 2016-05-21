@@ -1,4 +1,4 @@
-package particle_version05_vektoren;
+package Schwarmverhalten;
 
 import static org.lwjgl.opengl.GL11.GL_TRIANGLE_FAN;
 import static org.lwjgl.opengl.GL11.glBegin;

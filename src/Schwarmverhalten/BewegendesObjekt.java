@@ -1,4 +1,4 @@
-package particle_version05_vektoren;
+package Schwarmverhalten;
 
 import math.Vektor2D;
 

@@ -1,4 +1,4 @@
-package particle_version05_vektoren;
+package Schwarmverhalten;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

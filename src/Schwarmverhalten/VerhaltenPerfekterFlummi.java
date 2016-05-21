@@ -1,4 +1,4 @@
-package particle_version05_vektoren;
+package Schwarmverhalten;
 
 public class VerhaltenPerfekterFlummi implements Verhalten {
    private Flummi flummi;
