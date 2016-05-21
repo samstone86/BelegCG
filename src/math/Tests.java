@@ -1,13 +1,12 @@
-package Belegaufgabe;
+package math;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class Tests{
-    
+
     //Speicherüberlauf
     @Test(expected=java.lang.ArithmeticException.class) // FÜR CROSSPRODUCT, DOTPRODUCT, LENGTH, DETERMINANTE
-    public void testSpeicherüberlauf(){
+    public void testSpeicherueberlauf(){
 
     	Vektor2D v0 = new Vektor2D(0.0, 0.0);
         Vektor2D v1 = new Vektor2D(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -31,7 +30,7 @@ public class Tests{
         double s4 = Double.MIN_VALUE;
         double s5 = Double.MAX_VALUE;
         double s6 = 0.0;
-        
+
         //Addition: -> assertNull Success, if Double Overflow
         	//Überlauf
         		//LineareAlgebra.show(LineareAlgebra.add(v7, v8));

@@ -1,4 +1,4 @@
-package Belegaufgabe;
+package math;
 
 import java.util.Random;
 import static java.lang.Math.*;
@@ -22,15 +22,15 @@ public class Vektor2D {
         this.y=copy.y;
     }
     
-    private void onErrorSetZero() {
-        System.err.println("Double overflow");
+    private void onErrorSetZero(int err) {
+        System.err.println("Double overflow" + err);
         setPosition(0.0, 0.0);
     }
 
     public void add(Vektor2D v) {
         if (((Double)(this.x += v.x)).isInfinite() || ((this.x += v.x) == Double.MAX_VALUE) ||
                    ((Double)(this.y += v.x)).isInfinite() || ((this.y += v.y) == Double.MAX_VALUE)) {
-            onErrorSetZero(3);
+            onErrorSetZero(1);
         } else  {
             this.x += v.x;
             this.y += v.y;
@@ -39,9 +39,9 @@ public class Vektor2D {
 
     public void sub(Vektor2D v) {
       if (this.x > 0 ? v.x < Double.MIN_VALUE + this.x : v.x > Double.MAX_VALUE + this.x) {
-            onErrorSetZero();
+            onErrorSetZero(2);
         } else if (this.y > 0 ? v.y < Double.MIN_VALUE + this.y : v.y > Double.MAX_VALUE + this.y) {
-            onErrorSetZero();
+            onErrorSetZero(3);
         } else {
             this.x -= v.x;
             this.y -= v.y;
@@ -51,13 +51,13 @@ public class Vektor2D {
     public void mult(double s) {
         if (s > 0 ? this.x > Double.MAX_VALUE/s || this.x < Double.MIN_VALUE/s : (s < -1 ? this.x > Double.MIN_VALUE/s
                 || this.x < Double.MAX_VALUE/s : s == -1 && this.x == Double.MIN_VALUE)) {
-            onErrorSetZero();
+            onErrorSetZero(4);
         } else if (s > 0 ? this.y > Double.MAX_VALUE/s || this.y < Double.MIN_VALUE/s : (s < -1 ? this.y > Double.MIN_VALUE/s
                 || this.y < Double.MAX_VALUE/s : s == -1 && this.y == Double.MIN_VALUE)) {
-            onErrorSetZero();
+            onErrorSetZero(5);
         } else if (((Double)(this.x *= s)).isInfinite() || ((this.x *= s) == Double.MAX_VALUE) ||
                    ((Double)(this.y *= s)).isInfinite() || ((this.y *= s) == Double.MAX_VALUE)) {
-            onErrorSetZero();
+            onErrorSetZero(6);
         } else {
             this.x *= s;
             this.y *= s;
@@ -66,18 +66,18 @@ public class Vektor2D {
 
     public void div(double s) {
         if ((this.x == Double.MIN_VALUE) && (s == -1)) {
-            onErrorSetZero();
+            onErrorSetZero(7);
         } else if ((this.y == Double.MIN_VALUE) && (s == -1)) {
-            onErrorSetZero();
+            onErrorSetZero(8);
         } else if (((Double)(this.x /= s)).isInfinite() ||
                    ((Double)(this.y /= s)).isInfinite()) {
-            onErrorSetZero();
+            onErrorSetZero(9);
         } else if (s == 0) {
-            onErrorSetZero();
+            onErrorSetZero(10);
         } else if ((s >= -0.1 || s <= 0.1) && (((this.x /= s) == Double.MIN_VALUE) || ((this.y /= s) == Double.MIN_VALUE))) {
-            onErrorSetZero();
+            onErrorSetZero(11);
         } else if (s == Double.MIN_VALUE && ((this.x >= -0.1 || this.x <= 0.1) || (this.y >= -0.1 || this.y <= 0.1))) {
-            onErrorSetZero();
+            onErrorSetZero(12);
         } else {
             this.x /= s;
             this.y /= s;

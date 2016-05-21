@@ -1,4 +1,4 @@
-package Belegaufgabe;
+package math;
 
 import java.util.Random;
 import static java.lang.Math.*;
