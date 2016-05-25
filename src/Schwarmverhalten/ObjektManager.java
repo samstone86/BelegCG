@@ -3,11 +3,11 @@ package Schwarmverhalten;
 import java.util.HashMap;
 
 public class ObjektManager {
-   private HashMap<Integer, Flummi> flummies;
+   private HashMap<Integer, Triangle> triangle;
    private static ObjektManager exemplar = new ObjektManager();
 
    private ObjektManager() {
-      flummies = new HashMap<Integer, Flummi>();
+      triangle = new HashMap<Integer, Triangle>();
    }
 
    public static ObjektManager getExemplar() {
@@ -18,23 +18,23 @@ public class ObjektManager {
       throw new CloneNotSupportedException("Clonen ist nicht erlaubt");
    }
    
-   public void registriereFlummi(Flummi obj) {
-      flummies.put(new Integer(obj.id), obj);
+   public void registriereFlummi(Triangle obj) {
+      triangle.put(new Integer(obj.id), obj);
    }
 
-   public void entferneFlummi(Flummi obj) {
-      flummies.remove(obj);
+   public void entferneFlummi(Triangle obj) {
+      triangle.remove(obj);
    }
    
-   public Flummi getFlummi(int objID) {
-      return flummies.get(new Integer(objID));
+   public Triangle getFlummi(int objID) {
+      return triangle.get(new Integer(objID));
    }
    
-   public HashMap<Integer, Flummi> getFlummiMap() {
-      return flummies;
+   public HashMap<Integer, Triangle> getFlummiMap() {
+      return triangle;
    }
    
    public int getFlummiSize() {
-      return flummies.size();
+      return triangle.size();
    }
 }

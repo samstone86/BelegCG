@@ -1,9 +1,9 @@
 package Schwarmverhalten;
 
 public class VerhaltenPerfekterFlummi implements Verhalten {
-   private Flummi flummi;
+   private Triangle flummi;
    
-   public VerhaltenPerfekterFlummi(Flummi flummi) {
+   public VerhaltenPerfekterFlummi(Triangle flummi) {
       this.flummi = flummi;
    }
    

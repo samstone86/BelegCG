@@ -14,7 +14,7 @@ public class VerhaltenTriangle implements Verhalten {
    
    @Override
    public void update() {
-      triangle.position.add(new Vektor2D(0, rand.nextFloat()*2 - 1));
+      triangle.position.add(new Vektor2D(0, rand.nextDouble() *2 - 1));
 
       if (triangle.position.y>480 || triangle.position.y<0)
          triangle.velocity.y *= -1;

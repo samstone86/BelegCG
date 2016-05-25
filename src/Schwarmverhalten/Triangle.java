@@ -39,3 +39,4 @@ public class Triangle extends BewegendesObjekt {
         glEnd();
     }
 }
+

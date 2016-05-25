@@ -4,7 +4,7 @@ import math.Vektor2D;
 
 public abstract class BewegendesObjekt extends BasisObjekt {
    public Vektor2D velocity;
-   public Verhalten verhalten = null;
+   public Verhalten schwarm = null;
    
    public BewegendesObjekt(Vektor2D position, Vektor2D velocity) {
       super(position);
@@ -12,11 +12,11 @@ public abstract class BewegendesObjekt extends BasisObjekt {
    }
       
    public void setVerhalten(Verhalten verhalten) {
-      this.verhalten = verhalten;
+      this.schwarm = verhalten;
    }
 
    public void update() {
-      if (verhalten!=null)
-         verhalten.update();
+      if (schwarm!=null)
+         schwarm.update();
    }
 }
