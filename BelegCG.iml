@@ -20,7 +20,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/lwjgl.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/lwjgl.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -29,7 +29,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/lwjgl_util.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/lwjgl_util.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
