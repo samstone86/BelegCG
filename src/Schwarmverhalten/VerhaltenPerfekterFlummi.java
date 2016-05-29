@@ -1,17 +1,17 @@
 package Schwarmverhalten;
 
 public class VerhaltenPerfekterFlummi implements Verhalten {
-   private Triangle flummi;
+   private Triangle triangle;
    
-   public VerhaltenPerfekterFlummi(Triangle flummi) {
-      this.flummi = flummi;
+   public VerhaltenPerfekterFlummi(Triangle triangle) {
+      this.triangle = triangle;
    }
    
    @Override
    public void update() {
-      flummi.position.add(flummi.velocity);
+      triangle.position.add(triangle.velocity);
 
-      if (flummi.position.y>480 || flummi.position.y<0)
-         flummi.velocity.y *= -1;
+      if (triangle.position.y>480 || triangle.position.y<0)
+         triangle.velocity.y *= -1;
    }
 }
