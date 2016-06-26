@@ -56,6 +56,5 @@ public class Bird extends BewegendesObjekt {
 	public int getObjID() {
 		return this.id;
 	}
-	
 }
 

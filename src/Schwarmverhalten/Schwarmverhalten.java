@@ -35,7 +35,7 @@ public class Schwarmverhalten extends BasisFenster {
 	public Schwarmverhalten() {
 		super("Schwarmverhalten", 1024, 768);
 		flock = ObjektManager.getExemplar();
-		erzeugeBirds(400);
+		erzeugeBirds(200);
 	}
 
 	private void erzeugeBirds(int anz) {
