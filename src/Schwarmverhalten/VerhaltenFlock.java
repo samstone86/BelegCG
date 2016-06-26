@@ -5,7 +5,7 @@ import math.LineareAlgebra;
 
 public class VerhaltenFlock implements Verhalten {
     private Bird bird;
-    private double panicDist = 4;
+    private double panicDist = 10;
     private ObjektManager flock;
     private int width, height;
     private Vektor2D target = new Vektor2D();
@@ -34,7 +34,7 @@ public class VerhaltenFlock implements Verhalten {
         regelAlignment = this.alignment();
         regelCohesion = this.cohesion();
         regelSeparation = this.separation();
-        regelAlignment.mult(0.9);
+        //regelAlignment.mult(0.9);
 
         //regelCohesion.mult(0.01);
 
