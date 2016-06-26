@@ -1,12 +1,15 @@
 package math;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import static java.lang.Math.*;
 
 public class Vektor2D {
 
     public double x, y;
-
+    Random rand = ThreadLocalRandom.current();
+    
     public Vektor2D() {
         this.x=0.0;
         this.y=0.0;
@@ -23,8 +26,15 @@ public class Vektor2D {
     }
     
     private void onErrorSetZero(int err) {
-        System.err.println("Double overflow" + err);
+        //System.err.println("Double overflow" + err);
+        //System.out.println("x" + " " + this.x);
+        //System.out.println("y" + " " + this.y);
         setPosition(0.0, 0.0);
+    }
+    
+    public void differenz(Vektor2D a , Vektor2D b) {
+    	this.x = Math.abs(a.x - b.x);
+    	this.y = Math.abs(a.y - b.y);
     }
 
     public void add(Vektor2D v) {
@@ -49,7 +59,7 @@ public class Vektor2D {
     }
 
     public void mult(double s) {
-        if (s > 0 ? this.x > Double.MAX_VALUE/s || this.x < Double.MIN_VALUE/s : (s < -1 ? this.x > Double.MIN_VALUE/s
+    	if (s > 0 ? this.x > Double.MAX_VALUE/s || this.x < Double.MIN_VALUE/s : (s < -1 ? this.x > Double.MIN_VALUE/s
                 || this.x < Double.MAX_VALUE/s : s == -1 && this.x == Double.MIN_VALUE)) {
             onErrorSetZero(4);
         } else if (s > 0 ? this.y > Double.MAX_VALUE/s || this.y < Double.MIN_VALUE/s : (s < -1 ? this.y > Double.MIN_VALUE/s
@@ -117,6 +127,13 @@ public class Vektor2D {
     	this.x *= max;
     	this.y *= max;
     }
+    
+    public Vektor2D Round() {
+
+		this.x = LineareAlgebra.Round(this.x);
+		this.y = LineareAlgebra.Round(this.y);
+		return this;
+	}
 
     public void setPosition(double new_x, double new_y) {
         this.x = new_x;

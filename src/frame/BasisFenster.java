@@ -9,7 +9,7 @@ public abstract class BasisFenster {
    private String title;
    
    public BasisFenster() {
-      this("Schwarmverhalten", 720, 576);
+      this("Schwarmverhalten",  1024, 768);
    }
    
    public BasisFenster(String title, int width, int height) {

@@ -224,7 +224,15 @@ public class LineareAlgebra {
     public static double abs(final Vektor3D v1) {
         return length(v1);
     }
+    
+    public static double Round(double temp) {
 
+		temp = temp * 1000;
+		temp = Math.round(temp);
+		temp = temp / 1000.0;
+		return temp;
+	}
+    
     public static void show(final Vektor2D v1) {
        	System.out.println("[" + v1.x + "]");
        	System.out.println("[" + v1.y + "]");
