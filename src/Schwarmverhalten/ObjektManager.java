@@ -34,7 +34,7 @@ public class ObjektManager {
       return bird;
    }
    
-   public int getBirdSize() {
+   public int getAllBirds() {
       return bird.size();
    }
    

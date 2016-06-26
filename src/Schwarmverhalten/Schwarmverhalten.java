@@ -10,14 +10,6 @@ import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
-import static org.lwjgl.opengl.GL20.GL_FRAGMENT_SHADER;
-import static org.lwjgl.opengl.GL20.glAttachShader;
-import static org.lwjgl.opengl.GL20.glCompileShader;
-import static org.lwjgl.opengl.GL20.glCreateProgram;
-import static org.lwjgl.opengl.GL20.glCreateShader;
-import static org.lwjgl.opengl.GL20.glLinkProgram;
-import static org.lwjgl.opengl.GL20.glShaderSource;
-import static org.lwjgl.opengl.GL20.glUseProgram;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -30,7 +22,7 @@ import frame.BasisFenster;
 
 public class Schwarmverhalten extends BasisFenster {
 	private ObjektManager flock;
-	private double speedFaktor = 1;
+	private double speedFaktor = 0.3;
 
 	public Schwarmverhalten() {
 		super("Schwarmverhalten", 1024, 768);
@@ -61,16 +53,7 @@ public class Schwarmverhalten extends BasisFenster {
 			glMatrixMode (GL_MODELVIEW);
 			glDisable(GL_DEPTH_TEST);
 
-			int shaderObjectF = glCreateShader(GL_FRAGMENT_SHADER);
-			glShaderSource(shaderObjectF, "" + "void main() { " + "gl_FragColor = vec4(1, 1, 1, 1);" + "}");
-			glCompileShader(shaderObjectF);
-
-			int programObject = glCreateProgram();
-			glAttachShader(programObject, shaderObjectF);
-			glLinkProgram(programObject);
-			glUseProgram(programObject);
-
-			for (int i=1; i<=flock.getBirdSize(); i++) {
+			for (int i = 1; i<=flock.getAllBirds(); i++) {
 				Bird bird = flock.getBird(i);
 				bird.setVerhalten(new VerhaltenFlock(bird, this.getWidth(), this.getHeight()));
 				bird.render();

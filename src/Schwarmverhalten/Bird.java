@@ -18,13 +18,13 @@ public class Bird extends BewegendesObjekt {
         this(new Vektor2D(0, 0), new Vektor2D(maxSpeed, maxSpeed), 1, 1, 0);
     }
 
-    public Bird(Vektor2D position, Vektor2D currentVelocity) {
-        this(position, currentVelocity, 1, 1, 0);
+    public Bird(Vektor2D position, Vektor2D velocity) {
+        this(position, velocity, 1, 1, 0);
     }
 
-    public Bird(Vektor2D position, Vektor2D currentVelocity, double r, double g, double b) {
-        super(position, currentVelocity);
-        this.Distance = 15;
+    public Bird(Vektor2D position, Vektor2D velocity, double r, double g, double b) {
+        super(position, velocity);
+        //this.Distance = 15;
         this.r=r;
         this.g=g;
         this.b=b;

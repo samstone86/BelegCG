@@ -5,7 +5,6 @@ import math.LineareAlgebra;
 
 public class VerhaltenFlock implements Verhalten {
     private Bird bird;
-    private double panicDist = 11;
     private double separationDist = 10;
     private ObjektManager flock;
     private int width, height;
@@ -27,28 +26,26 @@ public class VerhaltenFlock implements Verhalten {
     @Override
     public void update() {
         Vektor2D regelSeparation, regelAlignment, regelCohesion, regelSeek;
-        Vektor2D velocity = new Vektor2D(0.0,0.0);
+        Vektor2D velocity = new Vektor2D(0.0, 0.0);
 
         regelAlignment = this.alignment();
         regelCohesion = this.cohesion();
+        LineareAlgebra.show(regelCohesion);
         regelSeparation = this.separation();
-        //regelAlignment.mult(0.9);
-        //regelCohesion.mult(0.01);
 
-        velocity.add(bird.currentVelocity);
+        velocity.add(bird.getVelocity());
         velocity.add(regelAlignment);
         velocity.add(regelCohesion);
         velocity.add(regelSeparation);
 
-
+/*
         if (LineareAlgebra.isEqual(velocity, nullVektor)) {
             LineareAlgebra.show(bird.currentVelocity);
             LineareAlgebra.show(regelAlignment);
-
-        /*  LineareAlgebra.show(regelSeparation);
-            LineareAlgebra.show(regelCohesion); */
+            LineareAlgebra.show(regelSeparation);
+            LineareAlgebra.show(regelCohesion);
             System.out.println("");
-        }
+        }*/
 
         bird.position.add(velocity);
 
@@ -67,43 +64,13 @@ public class VerhaltenFlock implements Verhalten {
 
         if (bird.position.x >= width)
             bird.position.x = 0;
-        else if(bird.position.x <= 0)
+        else if (bird.position.x <= 0)
             bird.position.y = width;
-    }
-
-    public Vektor2D seek(Vektor2D target) {
-        help.differenz(target, bird.getPosition());
-        help.normalize();
-        help.mult(bird.getMaxSpeed());
-        help.sub(bird.velocity);
-        return help;
-    }
-
-    public Vektor2D arrive(Vektor2D target) {
-        help.differenz(target, bird.getPosition());
-        double dist = help.length();
-        double speed = bird.getMaxSpeed() * (dist / 300);
-        speed = Math.min(speed, bird.getMaxSpeed());
-        help.mult(speed / dist);
-        help.sub(bird.velocity);
-        return help;
-    }
-
-    public Vektor2D flee(Vektor2D target) {
-        // nur bei bestimmter Distanz, das Fliehen aktivieren
-        if (LineareAlgebra.euklDistance(bird.getPosition(), targetFlee) > panicDist)
-            return new Vektor2D(0, 0);
-        // Fliehen
-        help.differenz(bird.getPosition(), targetFlee);
-        help.mult(bird.getMaxSpeed());
-        help.normalize();
-        help.sub(bird.velocity);
-        return help;
     }
 
     public Vektor2D separation() {
         Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
-        for (int i = 0; i < flock.getBirdSize(); i++) {
+        for (int i = 0; i < flock.getAllBirds(); i++) {
             if (bird.getObjID() == i)
                 continue;
 
@@ -126,9 +93,10 @@ public class VerhaltenFlock implements Verhalten {
     public Vektor2D alignment() {
         Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
         int count = 0;
-        for (int i = 0; i < flock.getBirdSize(); i++) {
+        for (int i = 0; i < flock.getAllBirds(); i++) {
             if (bird.getObjID() == i)
                 continue;
+
             BasisObjekt bObj = flock.getBird(i);
             if (bObj instanceof Bird) {
                 Bird bObjF = (Bird) bObj;
@@ -149,13 +117,13 @@ public class VerhaltenFlock implements Verhalten {
     public Vektor2D cohesion() {
         Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
         int count = 0;
-        for (int i = 0; i < flock.getBirdSize(); i++) {
+        for (int i = 0; i < flock.getAllBirds(); i++) {
             if (bird.getObjID() == i)
                 continue;
             BasisObjekt bObj = flock.getBird(i);
             if (bObj instanceof Bird) {
                 Bird bObjF = (Bird) bObj;
-                steeringForce.add(bObjF.position);
+                steeringForce.add(bObjF.getPosition());
                 count++;
             }
         }
