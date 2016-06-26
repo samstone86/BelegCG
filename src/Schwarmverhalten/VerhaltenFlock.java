@@ -28,14 +28,10 @@ public class VerhaltenFlock implements Verhalten {
         Vektor2D regelSeparation, regelAlignment, regelCohesion, regelSeek;
         Vektor2D velocity = new Vektor2D(0.0,0.0);
 
-        //velocity.x = 0.0;
-        //velocity.y = 0.0;
-
         regelAlignment = this.alignment();
         regelCohesion = this.cohesion();
         regelSeparation = this.separation();
         //regelAlignment.mult(0.9);
-
         //regelCohesion.mult(0.01);
 
         velocity.add(bird.currentVelocity);
