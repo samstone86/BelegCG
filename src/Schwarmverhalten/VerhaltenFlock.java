@@ -5,7 +5,7 @@ import math.LineareAlgebra;
 
 public class VerhaltenFlock implements Verhalten {
     private Bird bird;
-    private double panicDist = 2;
+    private double panicDist = 4;
     private ObjektManager flock;
     private int width, height;
     private Vektor2D target = new Vektor2D();
@@ -25,28 +25,31 @@ public class VerhaltenFlock implements Verhalten {
 
     @Override
     public void update() {
-        Vektor2D regelSeparation, regelAlignment, regelCohesion;
-        Vektor2D velocity = new Vektor2D();
+        Vektor2D regelSeparation, regelAlignment, regelCohesion, regelSeek;
+        Vektor2D velocity = new Vektor2D(0.0,0.0);
 
-        velocity.x = 0.0;
-        velocity.y = 0.0;
+        //velocity.x = 0.0;
+        //velocity.y = 0.0;
 
-        regelSeparation = this.separation();
         regelAlignment = this.alignment();
-        regelAlignment.mult(0.9);
         regelCohesion = this.cohesion();
-        regelCohesion.mult(-0.01);
+        regelSeparation = this.separation();
+        regelAlignment.mult(0.9);
+
+        //regelCohesion.mult(0.01);
 
         velocity.add(bird.currentVelocity);
-        velocity.add(regelSeparation);
         velocity.add(regelAlignment);
         velocity.add(regelCohesion);
+        velocity.add(regelSeparation);
+
 
         if (LineareAlgebra.isEqual(velocity, nullVektor)) {
             LineareAlgebra.show(bird.currentVelocity);
-            LineareAlgebra.show(regelSeparation);
             LineareAlgebra.show(regelAlignment);
-            LineareAlgebra.show(regelCohesion);
+
+        /*  LineareAlgebra.show(regelSeparation);
+            LineareAlgebra.show(regelCohesion); */
             System.out.println("");
         }
 
@@ -102,7 +105,7 @@ public class VerhaltenFlock implements Verhalten {
     }
 
     public Vektor2D separation() {
-        Vektor2D steeringForce = new Vektor2D(0, 0);
+        Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
         for (int i = 0; i < flock.getBirdSize(); i++) {
             if (bird.id == i)
                 continue;
@@ -110,11 +113,11 @@ public class VerhaltenFlock implements Verhalten {
             if (bObj instanceof Bird) {
                 Bird bObjF = (Bird) bObj;
                 if (LineareAlgebra.euklDistance(bird.getPosition(), bObjF.getPosition())
-                        < (bird.Distance + bObjF.Distance)) {
+                        > (bird.Distance + bObjF.Distance)) {
                     Vektor2D help = new Vektor2D();
                     help = LineareAlgebra.sub(bird.getPosition(), bObjF.getPosition());
                     double length = help.length();
-                    help.normalize();
+                    help.truncate(panicDist);
                     help.div(length);
                     steeringForce.add(help);
                 }
@@ -124,7 +127,7 @@ public class VerhaltenFlock implements Verhalten {
     }
 
     public Vektor2D alignment() {
-        Vektor2D steeringForce = new Vektor2D(0, 0);
+        Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
         int count = 0;
         for (int i = 0; i < flock.getBirdSize(); i++) {
             if (bird.id == i)
@@ -147,7 +150,7 @@ public class VerhaltenFlock implements Verhalten {
     }
 
     public Vektor2D cohesion() {
-        Vektor2D steeringForce = new Vektor2D(0, 0);
+        Vektor2D steeringForce = new Vektor2D(0.0, 0.0);
         int count = 0;
         for (int i = 0; i < flock.getBirdSize(); i++) {
             if (bird.id == i)
@@ -160,10 +163,8 @@ public class VerhaltenFlock implements Verhalten {
             }
         }
         if (count > 0) {
-
-            steeringForce.mult(1. / count);
-            steeringForce.sub(bird.position);
-
+            steeringForce.mult(1.0 / count);
+            steeringForce.sub(bird.currentVelocity);
         }
         return steeringForce;
     }

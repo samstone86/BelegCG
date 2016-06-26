@@ -112,9 +112,9 @@ public class Vektor2D {
 
     public void normalize() {
         if (this.isNullVector()) {
-            Random rdm= new Random();
-            this.x = rdm.nextDouble() * 2 -1;
-            this.y = rdm.nextDouble() * 2 -1;
+
+            this.x = rand.nextDouble() * 2 -1;
+            this.y = rand.nextDouble() * 2 -1;
         } else {
             double l = this.length();
             this.x = (1 / l) * this.x;
