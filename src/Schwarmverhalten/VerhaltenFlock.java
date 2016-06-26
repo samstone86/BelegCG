@@ -9,10 +9,7 @@ public class VerhaltenFlock implements Verhalten {
     private ObjektManager flock;
     private int width, height;
     private Vektor2D target = new Vektor2D();
-    Vektor2D targetFlee = new Vektor2D(300, 300);
-    Vektor2D targetPoint = new Vektor2D(300, 300);
     Vektor2D help = new Vektor2D();
-    Vektor2D nullVektor = new Vektor2D(0.0, 0.0);
 
     public VerhaltenFlock(Bird bird, int width, int height) {
         this.bird = bird;
