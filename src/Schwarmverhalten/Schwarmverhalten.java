@@ -36,8 +36,7 @@ public class Schwarmverhalten extends BasisFenster {
 			Bird bird = new Bird(new Vektor2D(this.getWidth()/2, this.getHeight()/2), 																	 // Position
 							   				new Vektor2D(((rand.nextDouble() * 2) -1) * speedFaktor, ((rand.nextDouble() * 2) - 1) * speedFaktor),		 // Speed
 							   				rand.nextDouble(), rand.nextDouble(), rand.nextDouble());					 								 // RGB	 
-		    System.out.println("");
-			flock.registriereBird(bird);			
+			flock.registriereBird(bird);
 		} 
 	}
 	

@@ -10,6 +10,7 @@ public class VerhaltenFlock implements Verhalten {
     private int width, height;
     private Vektor2D target = new Vektor2D();
     Vektor2D help = new Vektor2D();
+    Vektor2D nullVektor = new Vektor2D(0.0,0.0);
 
     public VerhaltenFlock(Bird bird, int width, int height) {
         this.bird = bird;
@@ -27,14 +28,13 @@ public class VerhaltenFlock implements Verhalten {
 
         regelAlignment = this.alignment();
         regelCohesion = this.cohesion();
-        LineareAlgebra.show(regelCohesion);
+        //LineareAlgebra.show(regelCohesion);
         regelSeparation = this.separation();
 
         velocity.add(bird.getVelocity());
         velocity.add(regelAlignment);
         velocity.add(regelCohesion);
         velocity.add(regelSeparation);
-
 /*
         if (LineareAlgebra.isEqual(velocity, nullVektor)) {
             LineareAlgebra.show(bird.currentVelocity);
@@ -42,17 +42,9 @@ public class VerhaltenFlock implements Verhalten {
             LineareAlgebra.show(regelSeparation);
             LineareAlgebra.show(regelCohesion);
             System.out.println("");
-        }*/
-
-        bird.position.add(velocity);
-
-/*
-        if (bird.position.y >= height || bird.position.y <= 0)
-            bird.currentVelocity.y *= -1;
-
-        if (bird.position.x >= width || bird.position.x <= 0)
-            bird.currentVelocity.x *= -1;
+        }
 */
+        bird.position.add(velocity);
 
         if (bird.position.y >= height)
             bird.position.y = 0;
